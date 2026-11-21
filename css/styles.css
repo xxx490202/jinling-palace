@@ -39,7 +39,7 @@ body {
   max-width: 100%;
   font-family: "楷体", "KaiTi", "STKaiti", "Noto Serif CJK SC", serif;
   color: var(--ink);
-  background: var(--bg) url('../picture/background2.jpg') repeat;
+  background: var(--bg) url('../picture/background2.webp') repeat;
   background-size: 200px auto;
   overflow-x: visible; /* 不能 hidden，否则 sticky/fixed 全部失效 */
   width: 100%;
@@ -99,7 +99,7 @@ button { cursor: pointer; font-family: inherit; }
   justify-content: space-between;
   align-items: center;
   padding: 10px 24px;
-  background: url('../picture/background3.jpg') repeat;
+  background: url('../picture/background3.webp') repeat;
   background-size: 200px auto;
   border-bottom: 2px solid var(--border);
   box-shadow: var(--shadow-sm);
@@ -141,7 +141,7 @@ button { cursor: pointer; font-family: inherit; }
   align-items: center;
   gap: 4px;
   padding: 6px 16px;
-  background: url('../picture/background2.jpg') repeat;
+  background: url('../picture/background2.webp') repeat;
   background-size: 200px auto;
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
@@ -331,7 +331,7 @@ button { cursor: pointer; font-family: inherit; }
 /* ── 区域通用 ── */
 .region {
   padding: 32px 28px;
-  background: url('../picture/background.jpg') repeat;
+  background: url('../picture/background.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius);
   position: relative;
@@ -403,7 +403,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 .feature-card {
   padding: 20px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -482,7 +482,7 @@ button { cursor: pointer; font-family: inherit; }
 .year-detail {
   margin-top: 20px;
   padding: 24px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius);
   border: 1.5px solid var(--border);
@@ -527,7 +527,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 .culture-item {
   padding: 20px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -610,7 +610,7 @@ button { cursor: pointer; font-family: inherit; }
 .stat-card {
   text-align: center;
   padding: 20px 16px;
-  background: url('../picture/background5.jpg') repeat;
+  background: url('../picture/background5.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -1519,7 +1519,7 @@ img[loading="lazy"] {
 /* ── 引用块 ── */
 .quote-block {
   padding: 14px 20px;
-  background: url('../picture/background5.jpg') repeat;
+  background: url('../picture/background5.webp') repeat;
   background-size: 200px auto;
   border-left: 4px solid var(--gold);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -1553,7 +1553,7 @@ img[loading="lazy"] {
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius-sm);
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border: 1px solid var(--border);
   padding: 16px;
@@ -1577,7 +1577,7 @@ img[loading="lazy"] {
 }
 .qa-card {
   padding: 18px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -1714,7 +1714,7 @@ img[loading="lazy"] {
 .judge-container {
   margin-top: 20px;
   padding: 20px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -1833,7 +1833,7 @@ img[loading="lazy"] {
 /* ── 信息面板 ── */
 .info-panel {
   padding: 16px 20px;
-  background: url('../picture/background4.jpg') repeat;
+  background: url('../picture/background4.webp') repeat;
   background-size: 200px auto;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--border);
