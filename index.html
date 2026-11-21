@@ -1,0 +1,1788 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+  <meta charset="utf-8" />
+  <!-- 移动端横屏优先视口：initial-width=device-width 让视口宽度自动等于设备宽度（横屏时>竖屏时）-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes, viewport-fit=cover" />
+  <!-- iOS Safari 全屏模式 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- 禁止电话自动识别 -->
+  <meta name="format-detection" content="telephone=no" />
+  <title>金陵故宫梦 · 数字营造 — 南京明故宫交互式信息可视化</title>
+  <meta name="description" content="金陵故宫梦 — 带你走进六百年皇家宫殿的历史、建筑与文化。沉浸式信息可视化设计。" />
+  <link rel="stylesheet" href="css/styles.css?v=1774167800" />
+  <script src="js/lottie.min.js"></script>
+  <script src="animation-data.js"></script>
+</head>
+<body>
+
+  <!-- 开场动画 -->
+  <div id="intro-animation" class="intro-animation">
+    <div id="lottie-container" class="lottie-container"></div>
+  </div>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic" loop>
+    <source src="minggong-shanhexu.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 顶部固定栏 -->
+  <header class="topbar" aria-label="网站头部">
+    <div class="logo" title="金陵故宫梦">
+      <img src="picture/lg.png" alt="金陵故宫" class="logo-image" loading="eager">
+      <span class="logo-text">金陵故宫梦</span>
+    </div>
+  </header>
+
+  <!-- 顶部导航 -->
+  <nav class="topnav" id="mainNav" aria-label="主导航">
+    <div class="topnav-container">
+      <a class="topnav-item active" href="#overview" data-target="overview" title="宫城总览：南京明故宫的核心数据、地理区位与历史地位"><span class="label">宫城总览</span></a>
+      <a class="topnav-item" href="#history" data-target="history" title="金陵肇建：明太祖选址建都、靖难之役、迁都北京"><span class="label">金陵肇建</span></a>
+      <a class="topnav-item" href="#palace-map" data-target="palace-map" title="宫阙形制：交互式平面图，身临其境探索明故宫建筑群"><span class="label">宫阙形制</span></a>
+      <a class="topnav-item" href="#archaeology" data-target="archaeology" title="考古实证：出土文物与考古发掘成果"><span class="label">考古实证</span></a>
+      <a class="topnav-item" href="#achievement" data-target="achievement" title="筑业煌煌：填湖造地、工程技术、材料运输的工程奇迹"><span class="label">筑业煌煌</span></a>
+      <a class="topnav-item" href="#scientist" data-target="scientist" title="匠造薪传：建筑师、工匠精神"><span class="label">匠造薪传</span></a>
+      <a class="topnav-item" href="#book" data-target="book" title="营法典籍：古代建筑学专著"><span class="label">营法典籍</span></a>
+      <a class="topnav-item" href="#craft" data-target="craft" title="木石匠心：榫卯结构、木作、砖石、琉璃、彩画等传统营造技艺"><span class="label">木石匠心</span></a>
+      <a class="topnav-item" href="#culture" data-target="culture" title="宫苑文脉：帝王文治、前朝后寝、天人合一、礼制中正的哲学思想"><span class="label">宫苑文脉</span></a>
+      <a class="topnav-item" href="#compare" data-target="compare" title="宫城互鉴：南京明故宫与北京故宫全面对比"><span class="label">宫城互鉴</span></a>
+      <a class="topnav-item" href="#protect" data-target="protect" title="残垣守望：午门、东华门等现存遗迹与保护历程"><span class="label">残垣守望</span></a>
+      <a class="topnav-item" href="#about" data-target="about" title="数营志略：南京师范大学数字人文项目"><span class="label">数营志略</span></a>
+    </div>
+  </nav>
+
+  <!-- 首页视频 -->
+  <div class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="content-spacer"></div>
+
+  <!-- 主内容区域 -->
+  <main class="content" id="content">
+
+    <!-- 概览 -->
+    <section id="overview" class="region" aria-label="宫城总览">
+      <h2 class="section-title">宫城总览</h2>
+
+
+
+      <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:center;">
+        <div class="info-panel" style="padding:24px;">
+          <h4>南京明故宫</h4>
+          <p>明朝开国皇帝<strong>朱元璋</strong>于元至正二十六年（1366年）始建皇宫，洪武二十五年（1392年）基本完工。据《明史·舆服志》记载，明故宫占地约<strong>101.25万平方米</strong>，是当时中世纪世界上规模最大的宫殿建筑群，被称为<strong>"世界第一宫殿"</strong>。</p>
+          <p style="margin-top:10px;">宫殿由精通堪舆术的<strong>刘基</strong>设计选址，背倚钟山，面临燕雀湖，形成"背山面水"的绝佳风水格局。严格遵循《周礼·考工记》"匠人营国"的都城形制，采用<strong>"前朝后寝"</strong>的布局。</p>
+          <p style="margin-top:10px;"><span class="badge">明清宫室之蓝本</span> 明南京明故宫是<strong>北京故宫的蓝本</strong>，《明太宗实录》评价："凡庙社、郊祀、坛场、宫殿、门阙，规制悉如南京，而高敞壮丽过之。"</p>
+        </div>
+        <div style="text-align:center;">
+          <img src="picture/lishisuyuan1.jpeg" alt="南京明故宫复原图" style="width:100%; border-radius:12px; box-shadow:0 4px 20px rgba(139,0,0,.15);" loading="lazy">
+          <p style="font-size:12px; color:var(--ink-light); margin-top:8px;">《大明宫殿图》</p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;">
+        <div style="padding:14px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:8px; border:1px solid var(--border);">
+          <h4 style="color:var(--red-dark); font-size:14px; margin-bottom:6px;">地理位置</h4>
+          <p style="font-size:12.5px; color:var(--ink-mid); line-height:1.7; margin:0;">南京市玄武区中山东路，东邻南京博物院，西邻中山门，南临中山东路，北靠富贵山</p>
+        </div>
+        <div style="padding:14px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:8px; border:1px solid var(--border);">
+          <h4 style="color:var(--red-dark); font-size:14px; margin-bottom:6px;">保护区划</h4>
+          <p style="font-size:12.5px; color:var(--ink-mid); line-height:1.7; margin:0;">宫城遗址保护区约29万平方米；2006年列入全国重点文物保护单位；2011年遗址公园对外开放</p>
+        </div>
+        <div style="padding:14px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:8px; border:1px solid var(--border);">
+          <h4 style="color:var(--red-dark); font-size:14px; margin-bottom:6px;">历史地位</h4>
+          <p style="font-size:12.5px; color:var(--ink-mid); line-height:1.7; margin:0;">中世纪世界最大宫殿群（101.25万㎡），北京故宫（72万㎡）之蓝本，"世界第一宫殿"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 历史溯源 -->
+    <section id="history" class="region" aria-label="金陵肇建">
+      <h2 class="section-title">金陵肇建</h2>
+
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h3 class="feature-title">历史地位</h3>
+          <p class="feature-content">南京明故宫是明朝开国皇帝朱元璋于元至正二十六年（1366年）始建的皇宫，于洪武二十五年（1392年）基本完工。据《明史·舆服志》记载，明故宫占地约101.25万平方米，是中世纪世界上规模最大的宫殿建筑群，被誉为"世界第一宫殿"。明故宫的建造规制直接影响了北京故宫的形成，被《中国建筑史》誉为"明清宫室之蓝本"，是中国古代宫殿建筑发展史上的里程碑。1961年被列入江苏省文物保护单位，2006年列入全国重点文物保护单位。</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">建筑典范</h3>
+          <p class="feature-content">南京明故宫严格按照《周礼·考工记》"匠人营国，方九里，旁三门"的都城形制建造，采用"前朝后寝"的传统布局。中轴对称、方正严整的规划思想对中国后世城市规划产生了深远影响。宫殿建筑采用抬梁式木构架、重檐歇山顶、黄琉璃瓦等规制，体现了中国古代建筑的最高等级。《中国建筑史》评价其"规划严谨、布局合理、技术先进"，是中国古代都城规划和宫殿建筑的集大成之作。</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">文化载体</h3>
+          <p class="feature-content">明故宫见证了明朝建立、靖难之役、迁都北京等重大历史事件。1368年朱元璋在奉天殿即位称帝，建立明朝；1402年靖难之役中宫殿受损；1421年明成祖迁都北京。据《明太宗实录》记载，北京故宫"凡庙社、郊祀、坛场、宫殿、门阙，规制悉如南京，而高敞壮丽过之"。明故宫作为明代政治中心的实物见证，承载着丰富的历史信息和文化内涵。</p>
+        </div>
+      </div>
+
+      <section aria-label="历史时间轴">
+        <h3 class="subsection-title">历史沿革 · 时间轴</h3>
+        <div class="timeline">
+          <button class="year" data-year="1366" title="元至正二十六年，朱元璋下令建造吴王新宫，由刘基选址设计，征发军民工匠20万人，填燕雀湖改筑新城">1366年</button>
+          <button class="year" data-year="1367" title="明朝吴元年正月十七日，朱元璋主持开工典礼，同年十月二十三日初步竣工">1367年</button>
+          <button class="year" data-year="1368" title="洪武元年，朱元璋正式即位称帝，以应天府为南京，正式迁入新宫">1368年</button>
+          <button class="year" data-year="1375" title="洪武八年，下诏改建大内宫殿，增设午门左右两阙及左右掖门，增建文华殿、武英殿">1375年</button>
+          <button class="year" data-year="1392" title="洪武二十五年代建宫墙，在宫城前建造端门、承天门、金水桥，形成T字型广场">1392年</button>
+          <button class="year" data-year="1402" title="建文四年，靖难之役经四年战争，燕王朱棣攻破京师，奉天殿等宫殿被烧毁">1402年</button>
+          <button class="year" data-year="1421" title="永乐十九年，正式迁都北京，南京明故宫成为留都宫殿">1421年</button>
+          <button class="year" data-year="1645" title="顺治二年，清军入关灭南明，改应天府为江宁府，建筑遭到很大破坏">1645年</button>
+          <button class="year" data-year="1853" title="咸丰三年，太平天国定都天京，拆取南京故宫大量石料砖瓦修建新宫">1853年</button>
+          <button class="year" data-year="1956" title="1956年，列为江苏省文物保护单位，开始受到官方保护">1956年</button>
+          <button class="year" data-year="2006" title="2006年，列为全国重点文物保护单位，获得最高级别保护">2006年</button>
+          <button class="year" data-year="2011" title="2011年，明故宫遗址公园建成并对外开放">2011年</button>
+        </div>
+
+        <div id="yearDetail" class="year-detail">
+          <h4 id="yearTitle" style="margin:0 0 12px; color:var(--red-dark); font-size:18px;"></h4>
+          <p id="yearContent" style="margin:0; line-height:1.9; color:var(--ink-mid); font-size:14px;"></p>
+          <div style="margin-top:20px; text-align:center;"><img src="picture/1366.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1367.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1368.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1375.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1392.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1402.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1421.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1645.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1853.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/1956.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/2006.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+          <div style="margin-top:20px; text-align:center; display:none;"><img src="picture/2011.jpeg" alt="" style="max-width:100%; height:auto; max-height:280px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,.12);" loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- 金陵肇建问答环节 -->
+      <section aria-label="金陵肇建问答" style="margin-top:28px;">
+        <h3 class="subsection-title">知识问答 · 金陵肇建</h3>
+        <div class="qa-container">
+          <div class="qa-card">
+            <h4 class="qa-question">问题：明故宫的选址是谁设计的？</h4>
+            <button class="qa-toggle">显示答案</button>
+            <div class="qa-answer">
+              <p>明故宫的选址是由明代著名政治家、科学家<strong>刘基（刘伯温）</strong>设计的。刘基精通天文、地理、堪舆之术，经过周密勘察，最终选定钟山之阳、燕雀湖畔作为宫殿基址。他运用"背山面水"的风水理念，使宫殿背倚钟山（龙脉）、前临秦淮河（水脉），形成绝佳的风水格局。</p>
+              <p class="qa-source">资料来源：《明史·刘基传》《中国建筑史》</p>
+            </div>
+          </div>
+          <div class="qa-card">
+            <h4 class="qa-question">问题：明故宫建造历时多久？</h4>
+            <button class="qa-toggle">显示答案</button>
+            <div class="qa-answer">
+              <p>明故宫的建造历时<strong>26年</strong>，从元至正二十六年（1366年）开始填湖造地，至洪武二十五年（1392年）基本完工。期间历经多次扩建：洪武元年（1368年）正式迁入新宫；洪武八年（1375年）下诏改建大内宫殿；洪武二十五年（1392年）增设宫墙、建造端门。</p>
+              <p class="qa-source">资料来源：《明史·舆服志》《明太宗实录》</p>
+            </div>
+          </div>
+          <div class="qa-card">
+            <h4 class="qa-question">问题：靖难之役对明故宫造成了什么影响？</h4>
+            <button class="qa-toggle">显示答案</button>
+            <div class="qa-answer">
+              <p>靖难之役（1402年）对明故宫造成了毁灭性的破坏。燕王朱棣攻破京师后，"宫中火起"，奉天殿等重要宫殿被烧毁。战后朱棣虽一度修复部分建筑，但明故宫从此元气大伤，无法恢复到洪武时期的辉煌状态。这场战争标志着明故宫作为国家政治中心地位的终结。</p>
+              <p class="qa-source">资料来源：《明史·太祖本纪》《中国战争史》</p>
+            </div>
+          </div>
+          <div class="qa-card">
+            <h4 class="qa-question">问题：为什么明故宫被誉为"世界第一宫殿"？</h4>
+            <button class="qa-toggle">显示答案</button>
+            <div class="qa-answer">
+              <p>明故宫被誉为"世界第一宫殿"的原因有三：<br>1. <strong>规模最大</strong>：占地约101.25万平方米，远超当时其他国家的宫殿；<br>2. <strong>技术最先进</strong>：采用填湖造地、抬梁木构、琉璃烧制等多项创新技术；<br>3. <strong>影响深远</strong>：是北京故宫的蓝本，深刻影响了中国五百年的宫殿建筑。</p>
+              <p class="qa-source">资料来源：《中国建筑史》《世界建筑史》</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 宫殿图谱（交互式平面图） -->
+            <section id="palace-map" class="region" aria-label="宫阙形制">
+      <h2 class="section-title">宫阙形制</h2>
+      <p style="text-align:center; color:var(--red-dark); font-size:16px; margin:12px 0 20px; font-family:'楷体','KaiTi',serif; font-weight:bold; padding:10px; border:1px solid var(--border); border-radius:8px; background:rgba(245,237,224,.3);">请点击或悬浮建筑区块，了解详细介绍</p>
+
+      <div class="palace-map-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -30 200 260"
+               style="width:100%; max-width:500px; height:auto; display:block; margin:0 auto;"
+               role="img" aria-label="南京明故宫宫城平面图">
+
+          <!-- ═══════════ 宫城城墙（正方形）══════════ -->
+          <rect x="-95" y="-30" width="190" height="230"
+                fill="rgba(200,100,60,.08)" stroke="#8B0000" stroke-width="2" rx="2"
+                pointer-events="none"/>
+
+          <!-- ═══════════ 中轴线（虚线）══════════ -->
+          <line x1="0" y1="-30" x2="0" y2="190" stroke="#c9a84c"
+                stroke-width="1" stroke-dasharray="3,2" opacity=".5"
+                pointer-events="none"/>
+
+          <!-- ═══════════ 承天门 ═══════════ -->
+          <rect class="palace-zone" data-zone="chengtian"
+                x="-18" y="-28" width="36" height="14"
+                fill="rgba(220,150,60,.25)" stroke="#8B6914" stroke-width="0.8" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="-21" text-anchor="middle" fill="#5a3010" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">承天门</text>
+
+          <!-- ═══════════ 宫城正门（午门）══════════ -->
+          <rect class="palace-zone" data-zone="wumen"
+                x="-18" y="-2" width="36" height="14"
+                fill="rgba(220,150,60,.3)" stroke="#8B6914" stroke-width="1.2" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="5" text-anchor="middle" fill="#5a3010" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">午门</text>
+
+          <!-- 内金水桥 -->
+          <rect class="palace-zone" data-zone="jinshuiqiao"
+                x="-18" y="15" width="36" height="4"
+                fill="rgba(120,180,220,.4)" stroke="#607080" stroke-width="0.5" rx="1"
+                style="cursor:pointer;"/>
+
+          <!-- ═══════════ 前朝三大殿 ═══════════ -->
+          <!-- 外朝标注 -->
+          <rect x="-60" y="35" width="120" height="70"
+                fill="rgba(139,0,0,.05)" stroke="rgba(139,0,0,.2)"
+                stroke-width="0.6" stroke-dasharray="2,2" rx="1" pointer-events="none"/>
+          <text x="-55" y="30" text-anchor="middle" fill="#8B0000" font-size="8" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">外朝</text>
+
+          <!-- 奉天门 -->
+          <rect class="palace-zone" data-zone="fengtianmen"
+                x="-18" y="20" width="36" height="10"
+                fill="rgba(220,180,80,.25)" stroke="#8B6914" stroke-width="0.8" rx="1"
+                style="cursor:pointer;"/>
+          <text x="0" y="28" text-anchor="middle" fill="#8B6914" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">奉天门</text>
+
+          <!-- 奉天殿（与谨身殿大小一致） -->
+          <rect class="palace-zone" data-zone="fengtian"
+                x="-19" y="43" width="38" height="18"
+                fill="rgba(200,20,30,.3)" stroke="#8B0000" stroke-width="1.2" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="55" text-anchor="middle" fill="#8B0000" font-size="8" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".95" pointer-events="none">奉天殿</text>
+          <text x="0" y="61" text-anchor="middle" fill="#8B0000" font-size="4" 
+                font-family="'楷体','KaiTi',serif" opacity=".7"
+                pointer-events="none">金銮殿</text>
+
+          <!-- 华盖殿 -->
+          <rect class="palace-zone" data-zone="huagai"
+                x="-13" y="66" width="26" height="16"
+                fill="rgba(180,60,20,.28)" stroke="#8B0000" stroke-width="0.8" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="77" text-anchor="middle" fill="#8B0000" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">华盖殿</text>
+
+          <!-- 谨身殿 -->
+          <rect class="palace-zone" data-zone="jinshen"
+                x="-19" y="86" width="38" height="18"
+                fill="rgba(150,50,10,.28)" stroke="#8B0000" stroke-width="0.8" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="98" text-anchor="middle" fill="#8B0000" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">谨身殿</text>
+
+          <!-- ═══════════ 后寝 ═══════════ -->
+          <!-- 乾清门 -->
+          <rect class="palace-zone" data-zone="qianqingmen"
+                x="-13" y="110" width="26" height="9"
+                fill="rgba(220,180,80,.25)" stroke="#8B6914" stroke-width="0.8" rx="1"
+                style="cursor:pointer;"/>
+          <text x="0" y="117" text-anchor="middle" fill="#8B6914" font-size="6" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">乾清门</text>
+
+          <!-- 内廷标注 -->
+          <rect x="-60" y="120" width="120" height="60"
+                fill="rgba(75,0,130,.08)" stroke="rgba(75,0,130,.25)"
+                stroke-width="0.6" stroke-dasharray="2,2" rx="1" pointer-events="none"/>
+          <text x="-55" y="115" text-anchor="middle" fill="#483d8b" font-size="8" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">内廷</text>
+
+          <!-- 乾清宫 -->
+          <rect class="palace-zone" data-zone="qianqing"
+                x="-19" y="122" width="38" height="18"
+                fill="rgba(140,30,10,.32)" stroke="#8B0000" stroke-width="0.8" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="134" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">乾清宫</text>
+
+          <!-- 坤宁宫 -->
+          <rect class="palace-zone" data-zone="kunning"
+                x="-19" y="140" width="38" height="18"
+                fill="rgba(140,30,10,.32)" stroke="#8B0000" stroke-width="0.8" rx="1.5"
+                style="cursor:pointer;"/>
+          <text x="0" y="152" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">坤宁宫</text>
+
+          <!-- 内花园 -->
+          <rect class="palace-zone" data-zone="neihuayuan"
+                x="-25" y="160" width="50" height="16"
+                fill="rgba(50,150,50,.25)" stroke="#2d5016" stroke-width="0.8" rx="2"
+                style="cursor:pointer;"/>
+          <text x="0" y="170" text-anchor="middle" fill="#2d5016" font-size="6" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">内花园</text>
+
+          <!-- ═══════════ 玄武门 ═══════════ -->
+          <rect class="palace-zone" data-zone="xuanwumen"
+                x="-16" y="190" width="32" height="9"
+                fill="rgba(220,180,80,.25)" stroke="#8B6914" stroke-width="0.8" rx="1"
+                style="cursor:pointer;"/>
+          <text x="0" y="197" text-anchor="middle" fill="#8B6914" font-size="6" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">玄武门</text>
+
+          <!-- ═══════════ 东路建筑（东侧）══════════ -->
+          <!-- 文华殿 -->
+          <rect class="palace-zone" data-zone="wenhua"
+                x="-48" y="40" width="22" height="16"
+                fill="rgba(30,100,50,.3)" stroke="#1a5028" stroke-width="0.8" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-37" y="50" text-anchor="middle" fill="#1a5028" font-size="6" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">文华殿</text>
+
+          <!-- 春和殿 -->
+          <rect class="palace-zone" data-zone="chunhe"
+                x="-67" y="70" width="20" height="13"
+                fill="rgba(30,80,50,.25)" stroke="#1a5028" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-57" y="80" text-anchor="middle" fill="#1a5028" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">春和殿</text>
+
+          <!-- 奉先殿旧址 -->
+          <rect class="palace-zone" data-zone="fengxiandianjiu"
+                x="-70" y="122" width="20" height="14"
+                fill="rgba(100,30,10,.2)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-60" y="132" text-anchor="middle" fill="#600000" font-size="4" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">奉先殿旧址</text>
+
+          <!-- 崇仁宫 -->
+          <rect class="palace-zone" data-zone="chongren"
+                x="-48" y="122" width="22" height="14"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-37" y="132" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none"></text>
+
+          <!-- 东六宫 -->
+          <rect class="palace-zone" data-zone="dongliugong"
+                x="-48" y="140" width="22" height="24"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-37" y="154" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">东六宫</text>
+
+          <!-- 东五所 -->
+          <rect class="palace-zone" data-zone="dongwusuo"
+                x="-56" y="164" width="30" height="18"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="-41" y="173" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">东五所</text>
+
+          <!-- ═══════════ 西路建筑（西侧）══════════ -->
+          <!-- 武英殿 -->
+          <rect class="palace-zone" data-zone="wuying"
+                x="70" y="40" width="22" height="16"
+                fill="rgba(20,40,130,.3)" stroke="#1a2860" stroke-width="0.8" rx="1"
+                style="cursor:pointer;"/>
+          <text x="81" y="50" text-anchor="middle" fill="#1a2860" font-size="6" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".9" pointer-events="none">武英殿</text>
+
+          <!-- 奉先殿 -->
+          <rect class="palace-zone" data-zone="renzhi"
+                x="27" y="70" width="20" height="13"
+                fill="rgba(20,40,130,.25)" stroke="#1a2860" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="37" y="80" text-anchor="middle" fill="#1a2860" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">奉先殿</text>
+
+          <!-- 柔仪殿 -->
+          <rect class="palace-zone" data-zone="rouyi"
+                x="50" y="70" width="20" height="13"
+                fill="rgba(20,40,130,.25)" stroke="#1a2860" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="60" y="80" text-anchor="middle" fill="#1a2860" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">柔仪殿</text>
+
+          <!-- 大善殿 -->
+          <rect class="palace-zone" data-zone="dashan"
+                x="50" y="85" width="20" height="18"
+                fill="rgba(20,40,130,.25)" stroke="#1a2860" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="60" y="96" text-anchor="middle" fill="#1a2860" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">大善殿</text>
+
+          <!-- 九五飛龍殿 -->
+          <rect class="palace-zone" data-zone="jiuwufeilong"
+                x="50" y="105" width="20" height="18"
+                fill="rgba(20,40,130,.25)" stroke="#1a2860" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="60" y="116" text-anchor="middle" fill="#1a2860" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">九五飛龍殿</text>
+
+          <!-- 西宫 -->
+          <rect class="palace-zone" data-zone="cining"
+                x="26" y="122" width="22" height="14"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="37" y="132" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">西宫</text>
+
+          <!-- 西六宫 -->
+          <rect class="palace-zone" data-zone="xiliugong"
+                x="26" y="140" width="22" height="24"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="37" y="154" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">西六宫</text>
+
+          <!-- 西五所 -->
+          <rect class="palace-zone" data-zone="xiliusuo"
+                x="26" y="164" width="30" height="18"
+                fill="rgba(100,30,10,.25)" stroke="#600000" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+          <text x="41" y="173" text-anchor="middle" fill="#600000" font-size="5" font-weight="bold"
+                font-family="'楷体','KaiTi',serif" opacity=".85" pointer-events="none">西五所</text>
+
+          <!-- ═══════════ 四角角楼 ═══════════ -->
+          <rect class="palace-zone" data-zone="jiaolou_xinan"
+                x="74" y="-2" width="9" height="9"
+                fill="rgba(200,150,60,.35)" stroke="#8B6914" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+
+          <rect class="palace-zone" data-zone="jiaolou_dongnan"
+                x="-83" y="-2" width="9" height="9"
+                fill="rgba(200,150,60,.35)" stroke="#8B6914" stroke-width="0.6" rx="1"
+                style="cursor:pointer;"/>
+
+        </svg>
+
+        <div id="palace-tooltip" class="palace-tooltip"></div>
+
+        <div id="palace-info" class="info-panel" style="margin-top:16px;">
+          <h4 style="color:var(--red-dark);font-size:15px;">请点击或悬停建筑区块，了解详情</h4>
+          <div class="building-detail" style="font-size:13px;color:var(--ink-light);margin:0;">南京明故宫宫城平面图（坐北朝南布局）</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 考古发现 -->
+    <section id="archaeology" class="region" aria-label="考古实证">
+      <h2 class="section-title">考古实证</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+        <div style="padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+          <h3 style="margin:0 0 14px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">考古发掘历程</h3>
+          <p style="margin:0 0 12px; line-height:1.8; color:var(--ink-mid); font-size:14px;">20世纪以来，考古工作者对明故宫遗址进行了系统发掘，陆续揭示了这座皇家宫殿的地下遗存，为研究明代宫廷建筑提供了珍贵的实物依据。</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.9; color:var(--ink-mid); font-size:13.5px;">
+            <li><strong>1932年</strong>：中央研究院对明故宫遗址进行首次科学调查</li>
+            <li><strong>1956年</strong>：南京市文物保管委员会勘察午门、五龙桥遗址</li>
+            <li><strong>1984年</strong>：在东华门遗址出土大量琉璃瓦当、滴水残片</li>
+            <li><strong>1996年</strong>：对宫城轴线区域进行钻探，确认奉天殿台基范围</li>
+            <li><strong>2006年</strong>：配合地铁施工，发掘西华门至西安门区间遗址</li>
+            <li><strong>2011—2015年</strong>：遗址公园建设期间，系统清理五龙桥广场区域</li>
+            <li><strong>2021年</strong>：南京博物院对宫城东北角区域进行数字化测绘</li>
+          </ul>
+        </div>
+
+        <div style="padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+          <h3 style="margin:0 0 14px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">发掘面积与主要成果</h3>
+          <p style="margin:0 0 12px; line-height:1.8; color:var(--ink-mid); font-size:14px;">历次考古发掘揭露总面积逾<strong>3.6万平方米</strong>，出土文物涵盖建筑构件、生活用品、铭文砖石等类型，为复原明故宫历史原貌提供了不可替代的第一手资料。</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.9; color:var(--ink-mid); font-size:13.5px;">
+            <li><strong>台基与柱础</strong>：奉天殿、谨身殿石砌台基保存完好，柱础排列清晰可辨</li>
+            <li><strong>排水系统</strong>：金水桥下暗渠、宫城排水沟渠保存完整</li>
+            <li><strong>散水石</strong>：宫殿周围散水石板铺设规整</li>
+            <li><strong>御道砖</strong>：午门至奉天殿御道金砖多有存留</li>
+            <li><strong>砖砌散水</strong>：谨身殿北侧保存有完整的砖砌散水遗址</li>
+            <li><strong>石拱门</strong>：东华门现存三座石拱券门洞</li>
+            <li><strong>木构残件</strong>：部分木梁、木枋碳化残件埋藏于原地</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="subsection-title" style="margin:0 0 14px; font-size:17px; color:var(--red-dark); font-family:'楷体','KaiTi',serif;">代表性出土文物</h3>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/wadang.jpeg" alt="出土黄琉璃瓦当" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">黄琉璃瓦当</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">直径约14厘米，模压龙纹，釉色纯正。印证明故宫"黄瓦朱楹"规制，出土于午门遗址区。</p>
+        </div>
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/dishui.jpg" alt="绿釉滴水" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">绿釉滴水</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">兽面纹滴水，釉色青绿，为祭祀建筑专用。显示明故宫严格遵循等级分色营造制度。</p>
+        </div>
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/ming_chengzhuan.jpeg" alt="铭文城砖" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">铭文城砖</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">砖侧模印产地、窑匠、监造官员姓名，如"苏州府""江宁县"等。印证《明史》所载全国各府分担烧砖的史实。</p>
+        </div>
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/zhuchu.jpeg" alt="石刻柱础" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">石刻柱础</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">汉白玉柱础，雕卷草纹。与北京故宫柱础形制一致，证明两宫营建一脉相承。</p>
+        </div>
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/tongmending.jpeg" alt="铜门钉" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">铜门钉</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">直径约8厘米，鼓形鎏金铜钉，九排九列（九九八十一枚）。严格遵循"朱门金钉"礼制规范。</p>
+        </div>
+        <div style="padding:16px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border); text-align:center;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(139,0,0,.2); margin-bottom:10px; line-height:0;">
+            <img src="picture/lilishou.jpeg" alt="石螭首残件" style="width:100%; height:120px; object-fit:cover; display:block;">
+          </div>
+          <h4 style="margin:0 0 6px; color:var(--red-dark); font-size:14px;">石螭首残件</h4>
+          <p style="margin:0; font-size:12.5px; color:var(--ink-mid); line-height:1.7;">台基排水口螭首残段，印证奉天殿须弥座形制与北京故宫一脉相承的营造关系，为明代宫城排水系统的重要构件。</p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+        <h3 style="margin:0 0 12px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif; text-align:center;">遗址出土文物统计</h3>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+          <div class="stat-card">
+            <div class="stat-number">3600+</div>
+            <div class="stat-label">发掘面积（㎡）</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">12000+</div>
+            <div class="stat-label">出土琉璃构件（件）</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">300+</div>
+            <div class="stat-label">铭文城砖（块）</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">180+</div>
+            <div class="stat-label">石质建筑构件（件）</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">金属器物（件）</div>
+          </div>
+        </div>
+        <p style="margin:14px 0 0; font-size:12px; color:var(--ink-light); text-align:center;">数据来源：南京市博物馆、南京博物院历年考古发掘报告</p>
+      </div>
+
+      <!-- 考古实证选择题 -->
+      <section aria-label="考古实证知识问答" style="margin-top:28px;">
+        <h3 class="subsection-title">考古实证 · 知识问答</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+
+          <!-- 题1 -->
+          <div class="choice-card" data-question="arch-q1" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">① 截至目前，明故宫遗址考古发掘总面积约为多少？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="3.6万平方米是历次考古发掘揭露的总面积，并非单个遗址的发掘面积。" data-source="南京市博物馆考古档案">约3.6万平方米</button>
+              <button class="choice-button" data-correct="false" data-explanation="明故宫遗址保护区面积为29万平方米，这是保护区范围而非发掘面积。" data-source="南京市文物局">约29万平方米</button>
+              <button class="choice-button" data-correct="true" data-explanation="20世纪以来，考古工作者对明故宫遗址进行了系统发掘，揭露总面积逾3.6万平方米，为研究明代宫廷建筑提供了珍贵的第一手资料。" data-source="南京市博物馆、南京博物院历年考古发掘报告">逾3600平方米</button>
+              <button class="choice-button" data-correct="false" data-explanation="101.25万平方米是明故宫的总占地面积，而非考古发掘面积。" data-source="《明史·舆服志》">约101万平方米</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+          <!-- 题2 -->
+          <div class="choice-card" data-question="arch-q2" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">② 出土的黄琉璃瓦当主要印证了明故宫的什么建筑规制？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="黄色琉璃瓦为皇帝专用，绿色为王府用。瓦当主要印证的不是颜色规制，而是建筑等级。" data-source="《明史·舆服志》">王府用绿色琉璃瓦</button>
+              <button class="choice-button" data-correct="true" data-explanation="黄色琉璃瓦当直径约14厘米，模压龙纹，釉色纯正。印证明故宫使用\"黄瓦朱楹\"规制，即黄色琉璃瓦配朱红柱，这是皇帝专用建筑的最高等级规制。" data-source="南京市博物馆考古报告">"黄瓦朱楹"皇帝规制</button>
+              <button class="choice-button" data-correct="false" data-explanation="瓦当的龙纹装饰印证的是建筑等级，而非具体的殿名。奉天殿是建筑名称，不是规制分类。" data-source="《营造法式》">专用于奉天殿</button>
+              <button class="choice-button" data-correct="false" data-explanation="琉璃瓦当是宫殿屋面专用构件，民间建筑不得使用，因此不能印证民间建筑规制。" data-source="《明史·舆服志》">民间可使用琉璃瓦</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+          <!-- 题3 -->
+          <div class="choice-card" data-question="arch-q3" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">③ 铭文城砖上模印的信息，主要反映了什么历史信息？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="铭文城砖反映的是砖块的产地和烧制责任，而非城墙的具体长度。城墙长度的数据来源于史书记载。" data-source="南京市博物馆考古报告">城墙精确长度数据</button>
+              <button class="choice-button" data-correct="true" data-explanation="铭文城砖砖侧模印产地、窑匠、监造官员姓名，如'苏州府''江宁县'等，印证《明史》所载全国各府分担烧砖的史实，反映了明代大规模国家工程调动了全国资源的组织模式。" data-source="《明史·舆服志》">全国各府分担烧砖的史实</button>
+              <button class="choice-button" data-correct="false" data-explanation="铜门钉是金属门饰构件，与砖石无关。铭文城砖反映的是建筑材料的来源和质量管理。" data-source="南京市博物馆">门钉制造工艺</button>
+              <button class="choice-button" data-correct="false" data-explanation="明故宫城砖主要来自各地官窑，而非景德镇。景德镇以瓷器闻名。" data-source="《明史·工部志》">景德镇瓷器烧制</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+          <!-- 题4 -->
+          <div class="choice-card" data-question="arch-q4" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">④ 明故宫午门现存几孔门洞，是什么时期保存下来的？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="五孔门洞是中国古代城门的规制，午门是宫城正门，并非普通城门形制。" data-source="《中国古代建筑史》">五孔门洞</button>
+              <button class="choice-button" data-correct="false" data-explanation="南京午门是明代始建的建筑，现存门洞为明代原构，并非清代重修后的形态。" data-source="南京市文物局">清代重修后保留</button>
+              <button class="choice-button" data-correct="true" data-explanation="南京午门现存三孔门洞，是明代原构遗存，为宫城正门的基本规制。洪武二十五年（1392年）增建左右两阙及掖门，形成五凤楼形制，城台与门洞为明代原构，是明故宫保存最为完整的地上遗存之一。" data-source="南京市博物馆考古报告、南京市文物局">三孔门洞，明代原构</button>
+              <button class="choice-button" data-correct="false" data-explanation="午门与正阳门是不同类型的建筑。午门是宫城正门，正阳门是明代南京城墙的正南门。" data-source="《明史·舆服志》">与正阳门形制相同</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+          <!-- 题5 -->
+          <div class="choice-card" data-question="arch-q5" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">⑤ 石螭首残件出土于哪个建筑遗址，主要起什么作用？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="石螭首是宫殿台基的排水构件，出土于台基附近，而非城墙城门。" data-source="南京市博物馆考古报告">午门城门的门枕石</button>
+              <button class="choice-button" data-correct="false" data-explanation="石螭首是宫殿台基的排水口雕塑，不是门钉。" data-source="《营造法式》">奉天殿门钉装饰件</button>
+              <button class="choice-button" data-correct="true" data-explanation="石螭首残件出土于奉天殿台基遗址，是须弥座形制台基排水口的雕塑。螭首形似龙头，设在台基边缘的排水口，既导流雨水又寓意镇火辟邪，印证了奉天殿采用汉白玉须弥座的营造规制，与北京故宫一脉相承。" data-source="南京市博物馆考古报告、《中国建筑史》">奉天殿台基·排水口雕塑</button>
+              <button class="choice-button" data-correct="false" data-explanation="石螭首是建筑装饰构件，不是铭文标识。" data-source="《明史·舆服志》">铭文标识石碑</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+          <!-- 题6 -->
+          <div class="choice-card" data-question="arch-q6" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="choice-question">⑥ 铜门钉"九九八十一枚"的规制体现了什么礼制观念？</p>
+            <div class="choice-options" style="grid-template-columns:1fr 1fr;">
+              <button class="choice-button" data-correct="false" data-explanation="九排九列的排列方式体现的是九的倍数，阳数之极，与道教炼丹无关。" data-source="《明史·舆服志》">道教炼丹文化</button>
+              <button class="choice-button" data-correct="false" data-explanation="铜门钉的排列是规整的九排九列，不是八卦阵。" data-source="《中国古代礼制》">八卦阵法</button>
+              <button class="choice-button" data-correct="true" data-explanation="'九九八十一枚'（九排九列）严格遵循\"朱门金钉\"礼制规范。九为阳数之极，\"九九\"更是至极之数，象征皇权的至高无上。皇帝宫殿门钉必须为九的倍数，公侯伯等按爵位递减，形成严格的等级梯度。" data-source="《明史·舆服志》、《中国古代建筑史》">"朱门金钉"等级礼制</button>
+              <button class="choice-button" data-correct="false" data-explanation="九九八十一枚铜门钉体现的是皇权礼制，与普通工匠数量无关。" data-source="《明史·职官志》">工匠分工编号制度</button>
+            </div>
+            <div class="choice-result"></div>
+          </div>
+
+        </div>
+      </section>
+    </section>
+
+<section id="achievement" class="region" aria-label="筑业煌煌">
+      <h2 class="section-title">筑业煌煌</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div class="achievement-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <h3 class="achievement-title" style="margin:0 0 12px; color:var(--red-dark); font-size:16px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">填湖造地工程 <span class="toggle-icon">▼</span></h3>
+          <div class="achievement-content">
+            <p style="margin:0 0 10px; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">明故宫选址于燕雀湖，朱元璋征发<strong>军民工匠20余万人</strong>填湖造地，是中国古代规模最大的填湖工程之一。工程历时数年，挖掘土石方数千万立方米，最终将燕雀湖大部分区域填为平地。这一壮举展现了明代初期强大的国家动员能力。</p>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+              <li>采用巨石、木桩、灰土分层夯筑</li>
+              <li>地基深度达数米，确保稳固</li>
+              <li>工程规模在当时世界罕见</li>
+              <li>体现明代工程技术的先进水平</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">文献来源：《明史·舆服志》</p>
+            <img src="picture/thzd.jpg" alt="填湖造地工程" loading="lazy" style="max-height:150px; width:auto; border-radius:6px; margin:10px auto; box-shadow:0 2px 8px rgba(0,0,0,.1);">
+          </div>
+        </div>
+
+        <div class="achievement-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <h3 class="achievement-title" style="margin:0 0 12px; color:var(--red-dark); font-size:16px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">建筑技术创新 <span class="toggle-icon">▼</span></h3>
+          <div class="achievement-content">
+            <p style="margin:0 0 10px; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">明故宫建造采用了多项先进的建筑技术，代表了明代初期中国建筑的最高水平。其规划布局严格遵循儒家礼制思想，采用中轴线对称设计，体现了皇权的至高无上。建筑工艺上融合了木构、砖石、琉璃等多种材质，展现了当时工匠的精湛技艺。</p>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+              <li><strong>抬梁式木构架</strong>：实现大跨度宫殿空间</li>
+              <li><strong>斗拱系统</strong>：结构承重与装饰功能统一</li>
+              <li><strong>榫卯结构</strong>：不用铁钉，结构稳固</li>
+              <li><strong>琉璃烧制</strong>：高温釉彩技术成熟</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">文献来源：《中国建筑史》</p>
+            <img src="picture/jscx.jpg" alt="建筑技术创新" loading="lazy" style="max-height:150px; width:auto; border-radius:6px; margin:10px auto; box-shadow:0 2px 8px rgba(0,0,0,.1);">
+          </div>
+        </div>
+
+        <div class="achievement-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <h3 class="achievement-title" style="margin:0 0 12px; color:var(--red-dark); font-size:16px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">材料运输工程 <span class="toggle-icon">▼</span></h3>
+          <div class="achievement-content">
+            <p style="margin:0 0 10px; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">明故宫建造所需材料来自全国各地，运输工程规模浩大。这些材料通过水路、陆路等多种运输方式汇集南京，形成了庞大的物资供应链，展现了明代完善的物流体系。</p>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+              <li><strong>木料</strong>：来自湖广、四川深山，优质楠木、杉木</li>
+              <li><strong>石料</strong>：取自南京青龙山、大连等地</li>
+              <li><strong>琉璃瓦</strong>：聚宝山（今雨花台）设窑烧制</li>
+              <li><strong>金砖</strong>：来自苏州陆慕御窑</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">文献来源：《明太宗实录》</p>
+            <img src="picture/clys.jpg" alt="材料运输工程" loading="lazy" style="max-height:150px; width:auto; border-radius:6px; margin:10px auto; box-shadow:0 2px 8px rgba(0,0,0,.1);">
+          </div>
+        </div>
+      </div>
+
+      <!-- 工程数据 -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+        <div class="stat-card">
+          <div class="stat-number">20<span style="font-size:16px;">万+</span></div>
+          <div class="stat-label">参与工匠人数</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">26<span style="font-size:16px;">年</span></div>
+          <div class="stat-label">完整建造周期</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">101.25<span style="font-size:16px;">万㎡</span></div>
+          <div class="stat-label">占地面积</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">世界第一</div>
+          <div class="stat-label">中世纪最大宫殿</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 匠造薪传 -->
+    <section id="scientist" class="region" aria-label="匠造薪传区域">
+      <h2 class="section-title">匠造薪传</h2>
+      
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; padding:20px;">
+        <!-- 刘基 -->
+        <div class="scientist-card collapsed" style="border:1px solid #e0dcd4; border-radius:12px; padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <div style="display:flex; align-items:center; margin-bottom:16px;">
+            <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; margin-right:16px; background:transparent; padding:0; border:0;">
+              <img src="picture/liuji.png" alt="刘基" style="width:100%; height:100%; object-fit:cover; object-position:50% 60%; background:transparent;" loading="lazy">
+            </div>
+            <h3 class="scientist-title" style="margin:0; color:var(--red); font-size:20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; flex:1;">刘基（1311-1375） <span class="toggle-icon">▼</span></h3>
+          </div>
+          <div class="scientist-content">
+            <div style="display:flex; align-items:center; margin-bottom:16px;">
+              <div>
+                <p style="margin:4px 0 0; color:#666; font-size:14px;">明故宫选址设计师</p>
+              </div>
+            </div>
+            <p style="margin:0 0 12px; line-height:1.8; color:#444;">刘基，字伯温，浙江青田人，明朝开国功臣，杰出的政治家、文学家、科学家。精通天文、地理、数学、历法，运用科学方法为明故宫选址规划。</p>
+            <h4 style="margin:12px 0 8px; color:#333;">主要贡献：</h4>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:#444; font-size:14px;">
+              <li>运用科学方法选址，背倚钟山、面临燕雀湖</li>
+              <li>设计"背山面水"的城市格局</li>
+              <li>规划宫殿中轴线和功能分区</li>
+              <li>确立明代宫殿建筑的基本规制</li>
+            </ul>
+            <div style="margin-top:12px; text-align:center; margin-bottom:12px; background:transparent; padding:0; border:0;">
+              <img src="picture/liuji.png" alt="刘基" style="width:120px; height:auto; max-height:150px; object-fit:contain; background:transparent;" loading="lazy">
+            </div>
+            <div style="margin-top:12px; padding:12px; background:url('picture/background5.jpg') repeat; background-size:200px auto; border-radius:8px;">
+              <p style="margin:0; font-size:14px; color:#333; font-style:italic;">"博通经史，于书无不窥，尤精象纬之学。"</p>
+              <p style="margin:4px 0 0; font-size:12px; color:#888;">—— 《明史·刘基传》</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 蒯祥 -->
+        <div class="scientist-card collapsed" style="border:1px solid #e0dcd4; border-radius:12px; padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <div style="display:flex; align-items:center; margin-bottom:16px;">
+            <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; margin-right:16px; background:transparent; padding:0; border:0;">
+              <img src="picture/kuaixiang.png" alt="蒯祥" style="width:100%; height:100%; object-fit:cover; background:transparent;" loading="lazy">
+            </div>
+            <h3 class="scientist-title" style="margin:0; color:var(--red); font-size:20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; flex:1;">蒯祥（1397-1481） <span class="toggle-icon">▼</span></h3>
+          </div>
+          <div class="scientist-content">
+            <div style="display:flex; align-items:center; margin-bottom:16px;">
+              <div>
+                <p style="margin:4px 0 0; color:#666; font-size:14px;">明代著名建筑师</p>
+              </div>
+            </div>
+            <p style="margin:0 0 12px; line-height:1.8; color:#444;">蒯祥，江苏吴县人，明代杰出的建筑设计师和工匠大师。继承南京明故宫营造技艺，参与北京故宫建造，被誉为"蒯鲁班"。</p>
+            <h4 style="margin:12px 0 8px; color:#333;">主要贡献：</h4>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:#444; font-size:14px;">
+              <li>继承南京明故宫营造技艺传统</li>
+              <li>参与北京故宫设计与建造</li>
+              <li>创新木作结构技术</li>
+              <li>培养大批建筑工匠人才</li>
+            </ul>
+            <div style="margin-top:12px; text-align:center; margin-bottom:12px; background:transparent; padding:0; border:0;">
+              <img src="picture/kuaixiang.png" alt="蒯祥" style="width:120px; height:auto; max-height:150px; object-fit:contain; background:transparent;" loading="lazy">
+            </div>
+            <div style="margin-top:12px; padding:12px; background:url('picture/background5.jpg') repeat; background-size:200px auto; border-radius:8px;">
+              <p style="margin:0; font-size:14px; color:#333; font-style:italic;">技艺精湛，善于创新，被时人誉为"蒯鲁班"。</p>
+              <p style="margin:4px 0 0; font-size:12px; color:#888;">—— 《明史·职官志》</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 工匠群体 -->
+      <div style="margin:0 20px 20px; border:1px solid #e0dcd4; border-radius:12px; padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+        <h3 style="margin:0 0 16px; color:var(--red); font-size:18px;">工匠群体与工匠精神</h3>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <p style="margin:0; line-height:1.8; color:#444;">明故宫建造征发<strong>军民工匠20余万人</strong>，集合全国最优秀的建筑人才。工匠分工明确，专业精细。</p>
+          
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <h4 style="margin:0; color:#333;">工匠分工：</h4>
+              <ul style="margin:0; padding-left:18px; line-height:1.8; color:#444; font-size:14px;">
+                <li><strong>木作</strong>：梁架、斗拱、门窗制作</li>
+                <li><strong>石作</strong>：台基、石柱、雕刻加工</li>
+                <li><strong>瓦作</strong>：墙体砌筑、屋面铺瓦</li>
+                <li><strong>彩画作</strong>：梁枋彩绘、图案装饰</li>
+              </ul>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <h4 style="margin:0; color:#333;">工匠精神传承：</h4>
+              <ul style="margin:0; padding-left:18px; line-height:1.8; color:#444; font-size:14px;">
+                <li><strong>精益求精</strong>：追求完美的工艺品质</li>
+                <li><strong>严谨细致</strong>：精确的尺寸和结构</li>
+                <li><strong>传承创新</strong>：在传统基础上创新技术</li>
+                <li><strong>协作精神</strong>：大规模工程协作能力</li>
+              </ul>
+            </div>
+          </div>
+          
+          <p style="margin:20px 0 0; font-size:12px; color:#888; text-align:center;">文献来源：《明史·职官志》《中国科学技术史》</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 建筑著作 -->
+    <section id="book" class="region region-book" aria-label="营法典籍区域">
+      <h2 class="section-title">营法典籍</h2>
+      
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; padding:20px;">
+        <!-- 营造法式 -->
+        <div style="border:1px solid #e0dcd4; border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <div style="text-align:center; margin-bottom:16px;">
+            <div style="width:80px; height:100px; margin:0 auto; border-radius:4px; overflow:hidden;">
+              <img src="picture/yingzao-fashi.jpeg" alt="营造法式" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+            </div>
+          </div>
+          <h3 style="margin:0 0 8px; color:var(--red); font-size:18px; text-align:center;">《营造法式》</h3>
+          <p style="margin:0 0 8px; text-align:center; color:#666; font-size:14px;">北宋·李诫著（1103年）</p>
+          <p style="margin:0 0 12px; line-height:1.8; color:#444; font-size:14px;">中国古代最完整的建筑技术专著，详细记载建筑规制、工料定额、构件尺寸，包含大量建筑图样。</p>
+          <h4 style="margin:12px 0 8px; color:#333; font-size:14px;">主要内容：</h4>
+          <ul style="margin:0; padding-left:16px; line-height:1.6; color:#444; font-size:13px;">
+            <li>建筑制度与规范</li>
+            <li>构件尺寸标准</li>
+            <li>工料定额计算</li>
+            <li>建筑图样与做法</li>
+          </ul>
+          <p style="margin:12px 0 0; font-size:14px; color:var(--red); text-align:center;">明故宫建造的重要技术参考</p>
+        </div>
+        
+        <!-- 天工开物 -->
+        <div style="border:1px solid #e0dcd4; border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <div style="text-align:center; margin-bottom:16px;">
+            <div style="width:80px; height:100px; margin:0 auto; border-radius:4px; overflow:hidden;">
+              <img src="picture/tiangong-kaiwu.jpg" alt="天工开物" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+            </div>
+          </div>
+          <h3 style="margin:0 0 8px; color:var(--red); font-size:18px; text-align:center;">《天工开物》</h3>
+          <p style="margin:0 0 8px; text-align:center; color:#666; font-size:14px;">明·宋应星著（1637年）</p>
+          <p style="margin:0 0 12px; line-height:1.8; color:#444; font-size:14px;">明代科学技术百科全书，详述砖瓦烧制、木材加工、冶金铸造等工艺，与明故宫同时代的技术文献。</p>
+          <h4 style="margin:12px 0 8px; color:#333; font-size:14px;">主要内容：</h4>
+          <ul style="margin:0; padding-left:16px; line-height:1.6; color:#444; font-size:13px;">
+            <li>砖瓦烧制工艺</li>
+            <li>木材加工技术</li>
+            <li>冶金铸造方法</li>
+            <li>建筑材料制作</li>
+          </ul>
+          <p style="margin:12px 0 0; font-size:14px; color:var(--red); text-align:center;">记录明代建筑材料制作方法</p>
+        </div>
+        
+        <!-- 工程做法则例 -->
+        <div style="border:1px solid #e0dcd4; border-radius:12px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <div style="text-align:center; margin-bottom:16px;">
+            <div style="width:80px; height:100px; margin:0 auto; border-radius:4px; overflow:hidden;">
+              <img src="picture/gongcheng-zuofa.jpeg" alt="工程做法则例" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+            </div>
+          </div>
+          <h3 style="margin:0 0 8px; color:var(--red); font-size:18px; text-align:center;">《工程做法则例》</h3>
+          <p style="margin:0 0 8px; text-align:center; color:#666; font-size:14px;">清代工部编（1734年）</p>
+          <p style="margin:0 0 12px; line-height:1.8; color:#444; font-size:14px;">清代官式建筑技术标准，继承明代营造传统，详细记录建筑构件尺寸、施工规范、工料计算。</p>
+          <h4 style="margin:12px 0 8px; color:#333; font-size:14px;">主要内容：</h4>
+          <ul style="margin:0; padding-left:16px; line-height:1.6; color:#444; font-size:13px;">
+            <li>建筑构件尺寸标准</li>
+            <li>施工规范与流程</li>
+            <li>工料计算方法</li>
+            <li>建筑等级制度</li>
+          </ul>
+          <p style="margin:12px 0 0; font-size:14px; color:var(--red); text-align:center;">体现明故宫建筑规制传承</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工艺解析 -->
+    <section id="craft" class="region" aria-label="木石匠心">
+      <h2 class="section-title">木石匠心</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div class="craft-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:22px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <h3 class="craft-title" style="margin:0 0 16px; color:var(--red-dark); font-size:17px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">木作工艺 <span class="toggle-icon">▼</span></h3>
+          <div class="craft-content">
+            <div style="margin-bottom:14px;">
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 榫卯结构</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">据《营造法式》记载，明故宫采用复杂的榫卯连接方式，不用一颗铁钉，结构稳固异常。常见榫卯类型包括：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>直榫</strong>：用于一般构件连接</li>
+                <li><strong>燕尾榫</strong>：用于需要拉结的部位，俗称"银锭榫"</li>
+                <li><strong>透榫</strong>：贯穿构件的榫头，结构牢固</li>
+              </ul>
+            </div>
+            <div style="margin-bottom:14px;">
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 木材选择</h4>
+              <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>楠木</strong>：耐腐防虫，首要用材，产自湖广、四川</li>
+                <li><strong>杉木</strong>：耐水耐腐，用于潮湿部位</li>
+                <li><strong>银杏木</strong>：纹理美观，用于装饰构件</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 梁架结构</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">明故宫采用<strong>抬梁式木构架</strong>。主要特点：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>七架梁</strong>：用于一般殿堂，跨度较大</li>
+                <li><strong>五架梁</strong>：用于次要建筑</li>
+                <li><strong>斗拱</strong>：层层出挑，承托屋面，兼具装饰功能</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="craft-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:22px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+          <h3 class="craft-title" style="margin:0 0 16px; color:var(--red-dark); font-size:17px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">砖石与琉璃工艺 <span class="toggle-icon">▼</span></h3>
+          <div class="craft-content">
+            <div style="margin-bottom:14px;">
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 砖石工艺</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">明故宫城墙采用条石基础、大城砖砌筑。据考古发掘：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>城砖</strong>：尺寸约40×20×10厘米，重约15公斤</li>
+                <li><strong>砌筑方法</strong>：采用"一丁一顺"法，稳固耐久</li>
+                <li><strong>灰浆</strong>：糯米汁加石灰（比例约1:3），坚固异常</li>
+              </ul>
+            </div>
+            <div style="margin-bottom:14px;">
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 台基雕刻</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">宫殿台基为<strong>汉白玉须弥座</strong>：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>须弥座</strong>：层层内收，形似山峦，象征佛座</li>
+                <li><strong>螭首</strong>：排水口雕成龙头形状</li>
+                <li><strong>栏板望柱</strong>：雕刻龙凤云纹，技法精湛</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 琉璃工艺</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;"><strong>黄色琉璃瓦</strong>为皇帝专用：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>琉璃窑</strong>：在聚宝山（今雨花台）设窑烧制</li>
+                <li><strong>烧制温度</strong>：高达1100-1200摄氏度</li>
+                <li><strong>色彩等级</strong>：黄色为帝用，绿色为王府用</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="craft-card collapsed" style="margin-top:20px; border:1px solid var(--border); border-radius:12px; padding:22px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+        <h3 class="craft-title" style="margin:0 0 16px; color:var(--red-dark); font-size:17px; cursor:pointer; text-align:center; font-family:'楷体','KaiTi',serif;">彩画与装饰工艺 <span class="toggle-icon">▼</span></h3>
+        <div class="craft-content">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+            <div>
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 彩画工艺</h4>
+              <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:13.5px;">据《营造法式》卷十四记载，明代彩画主要类型：</p>
+              <ul style="margin:6px 0 0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>和玺彩画</strong>：龙凤为主题，皇帝专用</li>
+                <li><strong>旋子彩画</strong>：旋花纹饰，用于次要建筑</li>
+                <li><strong>苏式彩画</strong>：山水花鸟，用于园林建筑</li>
+                <li><strong>色彩</strong>：以青绿为主，配以朱红、金粉</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="margin:0 0 8px; color:var(--red-dark); font-size:14px;">▸ 金属装饰</h4>
+              <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                <li><strong>鎏金</strong>：铜构件表面鎏金，金光灿烂</li>
+                <li><strong>镏金</strong>：殿脊、门钉使用镏金工艺</li>
+                <li><strong>铁件</strong>：门环、包叶等铁件，锻造精细</li>
+                <li><strong>铜鹤</strong>：陈设于宫殿前，寓意吉祥</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin:14px 0 0; font-size:12px; color:var(--ink-light);">文献来源：《明史·舆服志》《营造法式》《中国建筑史》（梁思成著）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心文化 -->
+    <section id="culture" class="region" aria-label="宫苑文脉">
+      <h2 class="section-title">宫苑文脉</h2>
+
+      <div class="culture-grid">
+        <div class="culture-item">
+          <h3 class="culture-title">帝王文治</h3>
+          <div class="culture-visual" style="background:transparent;">
+            <img src="picture/dwwz.jpg" alt="帝王文治" loading="lazy">
+          </div>
+          <p class="culture-content">明故宫是明初文治教化的核心舞台。朱元璋在此定儒兴学、规范科举，以程朱理学为纲重建文化秩序；朱棣下诏编纂《永乐大典》，汇通古今典籍，彰显盛世文治。宫城之中，奉天殿颁政令、谨身殿集文士，将权力与教化融为一体，承载"以儒治国、以文化民"的政治理想。</p>
+        </div>
+
+        <div class="culture-item">
+          <h3 class="culture-title">前朝后寝</h3>
+          <div class="culture-visual" style="background:transparent;">
+            <img src="picture/qchq.jpg" alt="前朝后寝" loading="lazy">
+          </div>
+          <p class="culture-content">外朝理政，内廷居住，严格遵循"前堂后寝"礼制分区。外朝为皇帝处理政务、举行大典、朝会群臣的核心场所；内廷为帝后起居、皇室生活的私密区域，功能界限清晰，体现"家国分治、礼序井然"的传统布局思想。</p>
+        </div>
+
+        <div class="culture-item">
+          <h3 class="culture-title">天人合一</h3>
+          <div class="culture-visual" style="background:transparent;">
+            <img src="picture/trhy.jpg" alt="天人合一" loading="lazy">
+          </div>
+          <p class="culture-content">背倚钟山（龙脉），前临秦淮河（水脉），依山傍水的选址契合"藏风聚气"的风水理念。宫城与自然山水相融，将天地之道融入都城营建，体现古人"天人合一"的哲学思想与"顺天应人"的营建智慧。</p>
+        </div>
+
+        <div class="culture-item">
+          <h3 class="culture-title">礼制中正</h3>
+          <div class="culture-visual" style="background:transparent;">
+            <img src="picture/lzzz.jpg" alt="礼制中正" loading="lazy">
+          </div>
+          <p class="culture-content">居中为尊，轴线承礼，以南北中轴线为核心骨架，奉天殿踞于正中，东西建筑对称排布。严格的对称布局彰显帝王正统地位，将"中正有序、尊卑有别"的封建礼制具象化，是中国古代都城礼制文化的典范。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 对比研究 -->
+    <section id="compare" class="region" aria-label="宫城互鉴">
+      <h2 class="section-title">宫城互鉴</h2>
+
+      <div style="padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+        <h3 style="margin:0 0 16px; color:var(--red-dark); font-size:18px; text-align:center; font-family:'楷体','KaiTi',serif;">南京明故宫 vs 北京故宫</h3>
+
+        <!-- 数据可视化对比 -->
+        <div class="data-svg-wrap" style="margin-bottom:20px;">
+          <svg viewBox="0 0 580 320" style="width:100%; font-family:'楷体','KaiTi',serif;">
+            <text x="290" y="28" text-anchor="middle" fill="#8B0000" font-size="15" font-weight="bold">明故宫与北京故宫面积对比（万平方米）</text>
+
+            <!-- 背景网格 -->
+            <line x1="90" y1="60" x2="90" y2="270" stroke="#e0dcd4" stroke-width="1"/>
+            <line x1="90" y1="270" x2="540" y2="270" stroke="#e0dcd4" stroke-width="1"/>
+            <line x1="90" y1="218" x2="540" y2="218" stroke="#e0dcd4" stroke-width=".5" stroke-dasharray="4,4"/>
+            <line x1="90" y1="166" x2="540" y2="166" stroke="#e0dcd4" stroke-width=".5" stroke-dasharray="4,4"/>
+            <line x1="90" y1="114" x2="540" y2="114" stroke="#e0dcd4" stroke-width=".5" stroke-dasharray="4,4"/>
+            <line x1="90" y1="62" x2="540" y2="62" stroke="#e0dcd4" stroke-width=".5" stroke-dasharray="4,4"/>
+
+            <text x="84" y="274" text-anchor="end" fill="#888" font-size="11">0</text>
+            <text x="84" y="222" text-anchor="end" fill="#888" font-size="11">30</text>
+            <text x="84" y="170" text-anchor="end" fill="#888" font-size="11">60</text>
+            <text x="84" y="118" text-anchor="end" fill="#888" font-size="11">90</text>
+            <text x="84" y="66" text-anchor="end" fill="#888" font-size="11">120</text>
+
+            <!-- 明故宫柱 -->
+            <text x="180" y="295" text-anchor="middle" fill="#8B0000" font-size="13" font-weight="bold">南京明故宫</text>
+            <text x="180" y="312" text-anchor="middle" fill="#888" font-size="11">1366年</text>
+            <rect class="bar-animate" x="100" y="270" width="160" height="0" data-height="200" fill="url(#barGrad1)" rx="4" style="transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1), y 1.2s cubic-bezier(0.4, 0, 0.2, 1);"/>
+            <text x="180" y="60" text-anchor="middle" fill="#8B0000" font-size="14" font-weight="bold">101.25万㎡</text>
+
+            <!-- 北京故宫柱 -->
+            <text x="430" y="295" text-anchor="middle" fill="#1f5491" font-size="13" font-weight="bold">北京故宫</text>
+            <text x="430" y="312" text-anchor="middle" fill="#888" font-size="11">1420年</text>
+            <rect x="350" y="156" width="160" height="114" fill="url(#barGrad2)" rx="4"/>
+            <text x="430" y="148" text-anchor="middle" fill="#1f5491" font-size="14" font-weight="bold">72万㎡</text>
+
+            <defs>
+              <linearGradient id="barGrad1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#c41e3a"/>
+                <stop offset="100%" stop-color="#8B0000"/>
+              </linearGradient>
+              <linearGradient id="barGrad2" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2a75b3"/>
+                <stop offset="100%" stop-color="#1f5491"/>
+              </linearGradient>
+            </defs>
+
+            <text x="290" y="318" text-anchor="middle" fill="#aaa" font-size="11">数据来源：《明史·舆服志》</text>
+          </svg>
+        </div>
+
+        <!-- 详细对比表格 -->
+        <div class="compare-table-wrap" style="overflow-x:auto; margin-bottom:16px;">
+          <table class="compare-table" style="white-space:nowrap;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd; padding:10px 12px; background:#8B0000; color:#fff; font-weight:bold; text-align:center;">对比项</th>
+                <th style="border:1px solid #ddd; padding:10px 12px; background:#8B0000; color:#fff; font-weight:bold; text-align:center;">南京明故宫</th>
+                <th style="border:1px solid #ddd; padding:10px 12px; background:#1f5491; color:#fff; font-weight:bold; text-align:center;">北京故宫</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">建造时间</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">1366—1392年（明初）</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">1406—1420年（明永乐）</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">占地面积</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; color:var(--red); font-weight:bold;">约101.25万平方米</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; color:#1f5491; font-weight:bold;">约72万平方米</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">城墙周长</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">约3.45—3.5公里</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">约3.428公里</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">主要建筑</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">奉天殿、华盖殿、谨身殿等</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">太和殿、中和殿、保和殿等</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">保存状况</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center;">仅存遗址</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; color:#1f5491; font-weight:bold;">保存完整，世界文化遗产</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; font-weight:600;">历史地位</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; color:var(--red);">北京故宫蓝本，"世界第一宫殿"</td>
+                <td style="border:1px solid #ddd; padding:9px 12px; text-align:center; color:#1f5491;">明清两代皇宫，世界文化遗产</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="quote-block" style="margin-top:16px;">
+          <p>"凡庙社、郊祀、坛场、宫殿、门阙，规制悉如南京，而高敞壮丽过之。"</p>
+          <p class="quote-source">——《明太宗实录》</p>
+        </div>
+
+        <!-- 奉天殿 vs 太和殿细致对比 -->
+        <div class="compare-section">
+          <h3 class="subsection-title toggle-header" style="margin:24px 0 14px; font-size:17px; color:var(--red-dark); font-family:'楷体','KaiTi',serif; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <span>奉天殿 vs 太和殿 · 建筑形制对照</span>
+            <span class="toggle-icon" style="margin-left:10px;">▼</span>
+          </h3>
+          <div class="toggle-content">
+            <p style="margin:0 0 16px; line-height:1.8; color:var(--ink-mid); font-size:14px;">奉天殿（今南京明故宫）与太和殿（今北京故宫）分别作为两座皇宫的正殿，是各自时代建筑艺术的最高代表，亦是中国古代宫殿建筑的巅峰之作。下表从开间、进深、斗拱、屋顶等维度进行逐项对比：</p>
+
+            <div style="overflow-x:auto; margin-bottom:16px;">
+          <table class="compare-table" style="white-space:nowrap;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">对比维度</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">奉天殿（南京明故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#1f5491; color:#fff; font-weight:bold; text-align:center; font-size:13px;">太和殿（北京故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#4a7c59; color:#fff; font-weight:bold; text-align:center; font-size:13px;">差异分析</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建造年代</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">洪武元年（1368年）始建<br>洪武二十五年（1392年）改建</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">永乐四年（1406年）始建<br>永乐十八年（1420年）完工<br>康熙三十四年（1695年）重建</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">奉天殿早于太和殿约52年；太和殿经历过火灾重建，建筑技术更为成熟</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">开间（面阔）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>面阔九间</strong>，通面阔约59.94米<br>（每间约6.66米）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>面阔十一间</strong>，通面阔约64.12米<br>（每间约5.83米）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">太和殿增加两间，进深方向扩展一间；间数增加体现宫殿体量的扩大与礼制等级的提升</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">进深</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>进深五间</strong>，通进深约35.5米<br>（七架梁结构）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>进深五间</strong>，通进深约37.2米<br>（九架梁结构）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两者进深间数相同，太和殿通进深略大；太和殿采用九架梁，屋架承载力更强</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">柱网布局</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">内槽七列柱<br>外槽前后各四根廊柱<br>金柱直通上层梁架</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">内槽七列柱（稍密）<br>外槽前后各六根廊柱（加宽）<br>减柱造：减去内槽部分金柱</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">太和殿采用"减柱造"，室内空间更开阔；廊柱加密，檐出更深，视觉更宏伟</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">斗拱形制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>品字科斗拱</strong><br>出跳较少（约二跳）<br>斗拱个体较大，承重功能为主<br>装饰性相对质朴</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>溜金斗拱（内斜）</strong><br>出跳较多（三至四跳）<br>斗拱个体较小，装饰性强<br>内拽翘嘴向上挑起</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">明初斗拱尚保留较多承重功能；清代太和殿斗拱趋于装饰化。两者均用七踩斗拱（最高等级），体现了明代官式建筑规制的延续</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">斗口尺寸</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">斗口约<strong>15厘米</strong><br>（明初营造尺，尺约32厘米）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">斗口约<strong>10厘米</strong><br>（清工部营造尺，尺约32厘米）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">奉天殿斗口明显大于太和殿，构件截面更大，整体风格浑厚有力；太和殿斗口缩小，构件趋于精巧细致</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">屋顶规制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>重檐庑殿顶</strong>（最高等级）<br>正脊约高9.9米<br>黄色琉璃瓦覆盖</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>重檐庑殿顶</strong>（最高等级）<br>正脊约高12.8米<br>黄色琉璃瓦+脊兽十件（最高规制）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿屋顶规制相同，均为重檐庑殿（古代建筑最高形制）。太和殿正脊更高，脊兽数量达到清代最高等级（十件仙人走兽），体现礼制的进一步强化</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">脊饰规格</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">龙吻（正脊两端）<br>垂脊仙人+龙凤垂兽</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">龙吻（正脊两端，高3.4米）<br>垂脊：仙人+龙、凤、狮、天马、海马、狻猊、押鱼、獬豸、斗牛、行什（共十件）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">太和殿垂脊仙人走兽达十件，为中国古代建筑脊饰之最；"行什"（雷震子形）为太和殿独有，奉天殿无此配置</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">台基形制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>三层台基</strong><br>汉白玉须弥座<br>各层高度约1.6米<br>螭首（龙首）排水口</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>三层台基（三层须弥座）</strong><br>汉白玉须弥座<br>总高约8.13米（三层合计）<br>三层均设螭首排水口1141个</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">台基规制一致，均为"三出阶"；太和殿台基更加宽大，三层合计更高，视觉压迫感更强；三层满布螭首为太和殿独有特征</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">殿内空间</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">设屏风宝座于殿内正中<br>无减柱，空间被分隔为多个区域<br>殿内不施天花者居多</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">宝座设于金銮殿台上<br>采用"减柱造"，室内宽敞通透<br>设井口天花（藻井），金龙藻井居中</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">太和殿室内空间更为开阔，整体感更强；井口天花（藻井）装饰在奉天殿时期尚未普遍，成为清代宫殿的标志性特征</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">彩画等级</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>和玺彩画</strong>为主流<br>龙凤纹样为主<br>以青绿、朱红为主色</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>金龙和玺彩画</strong>（最高等级）<br>满贴金箔，金龙遍布梁架<br>以青绿为底，金龙为主</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">彩画等级一致（均为和玺彩画），太和殿为"金龙和玺"——全部龙纹均以金箔贴饰，工艺更为奢华，金使用量大幅增加</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">今日状态</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:var(--red);">仅存遗址<br>台基柱础考古可辨<br>地上建筑已无存</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:#1f5491; font-weight:bold;">完整保存<br>作为故宫博物院核心建筑开放<br>世界文化遗产</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿命运迥异：奉天殿毁于靖难之役及后续战乱，仅余地下遗存；太和殿经历重建，至今屹立，为明清两代皇权象征</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 总结性文字 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+          <div style="padding:18px; background:rgba(139,0,0,.05); border-radius:10px; border:1px solid rgba(139,0,0,.2);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:14px; font-family:'楷体','KaiTi',serif;">奉天殿的历史价值</h4>
+            <p style="margin:0; font-size:13.5px; color:var(--ink-mid); line-height:1.8;">奉天殿是明代皇权的开端，见证了朱元璋开国称帝的庄严时刻。作为<strong>"世界第一宫殿"</strong>的正殿，它确立了明代宫殿建筑的基本范式：九间面阔、重檐庑殿顶、品字科斗拱、和玺彩画——这些规制被北京故宫完整继承。虽已化为遗址，但其建筑思想深刻影响了中国此后五百年的宫殿建筑。</p>
+          </div>
+          <div style="padding:18px; background:rgba(31,84,145,.05); border-radius:10px; border:1px solid rgba(31,84,145,.2);">
+            <h4 style="margin:0 0 10px; color:#1f5491; font-size:14px; font-family:'楷体','KaiTi',serif;">太和殿的集大成</h4>
+            <p style="margin:0; font-size:13.5px; color:var(--ink-mid); line-height:1.8;">太和殿是清代工匠在明代营建基础上集大成之作：在继承奉天殿规制的同时，将建筑体量推向极致——十一间面阔、十件脊兽、三层螭首台基、金龙和玺彩画，处处体现<strong>"普天之下，唯我独尊"</strong>的皇权美学。两殿对照，既可见明代"务实刚健"与清代"繁复壮丽"的不同建筑风格，也印证了"北京故宫规制悉如南京"的历史定论。</p>
+          </div>
+        </div>
+          </div>
+        </div>
+
+        <!-- 谨身殿 vs 保和殿 -->
+        <div class="compare-section">
+          <h3 class="subsection-title toggle-header" style="margin:24px 0 14px; font-size:17px; color:var(--red-dark); font-family:'楷体','KaiTi',serif; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <span>谨身殿 vs 保和殿 · 外朝第三殿对照</span>
+            <span class="toggle-icon" style="margin-left:10px;">▼</span>
+          </h3>
+          <div class="toggle-content">
+            <p style="margin:0 0 16px; line-height:1.8; color:var(--ink-mid); font-size:14px;">谨身殿（南京）与保和殿（北京）是外朝三大殿中最末一进的两座建筑，功能相近而形制各异。谨身殿在靖难之役中被毁后未再重建；保和殿则延续至今，承载了从科举殿试到筵宴的多元功能，见证了明清两代宫廷文化的变迁。</p>
+
+            <div style="overflow-x:auto; margin-bottom:16px;">
+          <table class="compare-table" style="white-space:nowrap;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">对比维度</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">谨身殿（南京明故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#1f5491; color:#fff; font-weight:bold; text-align:center; font-size:13px;">保和殿（北京故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#4a7c59; color:#fff; font-weight:bold; text-align:center; font-size:13px;">差异分析</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建造年代</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">洪武元年（1368年）始建<br>洪武二十五年（1392年）重建</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">永乐十八年（1420年）建成<br>屡遭火灾，康熙五十九年（1720年）重修</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿建造时间相差约52年；保和殿经历多次火灾重建，建筑形制已与原貌有较大出入</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建筑规模</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>面阔七间</strong>，通面阔约46.2米<br><strong>进深五间</strong>，约29.4米</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>面阔九间</strong>，通面阔约57.6米<br><strong>进深五间</strong>，约27.6米</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">保和殿面阔扩大至九间，形制升级，与太和殿呼应；谨身殿面阔较小，体现明初建筑规制尚未完全成熟</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">屋顶规制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>重檐歇山顶</strong><br>黄色琉璃瓦</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>重檐歇山顶</strong><br>黄色琉璃瓦 + 脊兽六件</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿屋顶规制相同（重檐歇山为第二等）；保和殿脊兽六件，略低于太和殿十件，体现严格的等级梯度</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">斗拱形制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>品字科斗拱</strong><br>五踩斗拱，出跳两层</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>溜金斗拱</strong><br>六踩斗拱，内拽起翘</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">保和殿斗拱出跳增加一踩，内拽起翘的溜金做法是清代斗拱特征，谨身殿则保留了更多明初古制</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建筑功能</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">册封太子、颁布诏令<br>接见藩属使臣</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">科举殿试（清代主要功能）<br>赐宴外藩、王公大臣<br>公主下嫁受礼</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">功能重心从政治仪式转向科举文化；保和殿的"殿试"功能使这座建筑成为中国科举史的实物见证</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">今日状态</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:var(--red);">仅存台基遗址<br>柱础位置考古可辨</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:#1f5491; font-weight:bold;">完整保存<br>对公众开放</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">与奉天殿一样，谨身殿的命运再次印证了南京明故宫"形制先驱、遗存断绝"的历史遗憾</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+
+        <!-- 午门对比 -->
+        <div class="compare-section">
+          <h3 class="subsection-title toggle-header" style="margin:24px 0 14px; font-size:17px; color:var(--red-dark); font-family:'楷体','KaiTi',serif; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <span>午门 · 南北两座宫城正门</span>
+            <span class="toggle-icon" style="margin-left:10px;">▼</span>
+          </h3>
+          <div class="toggle-content">
+            <p style="margin:0 0 16px; line-height:1.8; color:var(--ink-mid); font-size:14px;">午门是宫城正门，位于宫城南北中轴线的最南端，是皇帝颁发诏令、举行大典的重要场所。南京午门是北京午门的直接蓝本，两者形制一脉相承。南京午门现存三孔门洞，是明故宫保存最为完整的地上遗存之一。</p>
+
+            <div style="overflow-x:auto; margin-bottom:16px;">
+          <table class="compare-table" style="white-space:nowrap;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">对比维度</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">午门（南京明故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#1f5491; color:#fff; font-weight:bold; text-align:center; font-size:13px;">午门（北京故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#4a7c59; color:#fff; font-weight:bold; text-align:center; font-size:13px;">差异分析</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建造年代</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">洪武元年（1368年）<br>洪武二十五年（1392年）增建两阙</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">永乐十八年（1420年）<br>康熙六十一年（1722年）大修</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两座午门建造时间相差约52年；北京午门在清代有多次大修</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">门洞形制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>三孔门洞</strong><br>中门为御道（皇帝专用）<br>左右掖门各一</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>三孔门洞</strong><br>中门为御道（皇帝专用）<br>左右掖门各一，平面呈"凹"字形</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">门洞数量完全一致，奠定了"三门洞+掖门"的午门基本范式；北京午门因增建城台两侧观礼廊，形成"凹"字形平面，造型更为宏伟</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">城台高度</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">城台高约<strong>10米</strong><br>墩台宽度约60米</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">城台高约<strong>12.6米</strong><br>墩台宽度约126米，进深约65米</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">北京午门城台更为高阔，特别是两侧观礼廊的加建，使其体量约为南京午门的两倍，视觉冲击力更强</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">屋顶规制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>五凤楼形制</strong><br>重檐庑殿顶<br>黄色琉璃瓦</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>五凤楼形制</strong><br>重檐庑殿顶（五门殿）<br>黄色琉璃瓦</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">屋顶规制完全一致，均为重檐庑殿顶（五凤楼形制）；"五凤楼"之名源于正殿与两侧廊庑形成的五组屋脊，形如五凤展翅</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">两侧观礼廊</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">无两侧观礼廊<br>两侧为城墙直接收束</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>两侧各设13间观礼廊</strong><br>（共计26间）<br>用于朝贺时王公大臣列队</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两侧观礼廊是北京午门的标志性特征，为清代增设；南京午门无此配置，是两者最显著的形制差异</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">历史功能</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">颁布诏书（明代主要功能）<br>廷杖刑罚（"推出午门"）<br>接见藩属朝贡使臣</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">颁朔布政（每月朔日颁诏）<br>廷杖刑罚<br>接见外藩朝贡<br>大战告捷献俘礼</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">功能基本一致；北京午门增加了"大战献俘"之礼，体现了清代作为大一统帝国的军事庆典传统</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">今日状态</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:var(--red);">三孔门洞基本保存<br>城楼已毁<br>南京午门为遗址公园核心遗迹</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:#1f5491; font-weight:bold;">完整保存<br>对公众开放（可登城楼参观）</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">南京午门是现存最早、规制最完整的明代午门实物，对研究明代城门建筑具有重要基准价值</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+
+        <!-- 华盖殿 vs 中和殿 -->
+        <div class="compare-section">
+          <h3 class="subsection-title toggle-header" style="margin:24px 0 14px; font-size:17px; color:var(--red-dark); font-family:'楷体','KaiTi',serif; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+            <span>华盖殿 vs 中和殿 · 殿中奇葩</span>
+            <span class="toggle-icon" style="margin-left:10px;">▼</span>
+          </h3>
+          <div class="toggle-content">
+            <p style="margin:0 0 16px; line-height:1.8; color:var(--ink-mid); font-size:14px;">华盖殿（南京）与中和殿（北京）是外朝三大殿中形制最为独特的两座——它们体量最小，却扮演着不可替代的角色。华盖殿是皇帝举行大典前更衣、备宴的场所；中和殿则是皇帝登基前的临时御座，并用于阅读殿试试卷。两殿一南一北，形制相近，共同诠释了明代官式建筑的精致美学。</p>
+
+            <div style="overflow-x:auto; margin-bottom:16px;">
+          <table class="compare-table" style="white-space:nowrap;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">对比维度</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#8B0000; color:#fff; font-weight:bold; text-align:center; font-size:13px;">华盖殿（南京明故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#1f5491; color:#fff; font-weight:bold; text-align:center; font-size:13px;">中和殿（北京故宫）</th>
+                <th style="border:1px solid #ddd; padding:10px 14px; background:#4a7c59; color:#fff; font-weight:bold; text-align:center; font-size:13px;">差异分析</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建造年代</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">洪武元年（1368年）<br>洪武八年（1375年）重建</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">永乐十八年（1420年）<br>康熙五十二年（1713年）重建</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">华盖殿在洪武八年曾经历一次重要重建（"下诏改建大内宫殿"），其规制在此时基本定型</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建筑形制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>方形攒尖顶</strong><br>面阔约24米，进深约24米<br>近似正方形平面<br>覆黄色琉璃瓦</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>方形攒尖顶</strong><br>面阔、进深各约15米<br>正方形平面<br>覆黄色琉璃瓦</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两者形制极为相近——均为方形平面+攒尖顶，为三大殿中最小的两座；华盖殿体量约为中和殿的2.5倍，显示明初对这座特殊殿堂的重视程度更高</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">屋顶规制</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>方形圆攒尖顶</strong><br>顶部立铜铸镀金圆顶<br>（象征天圆地方）<br>脊兽配置相对简略</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;"><strong>方形圆攒尖顶</strong><br>顶部立铜铸鎏金宝顶<br>正方形殿身+圆形攒尖相交<br>无正脊，设垂脊五条</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿均以"方形圆攒尖"表达"天圆地方"的宇宙观；华盖殿宝顶镀金，中和殿宝顶鎏金，均以金属圆顶象征天穹</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">空间特征</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">殿内空间不大<br>顶部开圆形天窗<br>光线从穹顶洒落<br>营造神圣氛围</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">殿内正中设宝座<br>面积仅约190平方米<br>四面隔扇门，采光充足<br>四面可通行的独立小殿</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">中和殿是紫禁城中最小的大殿，但"小而独立"的设计独树一帜；华盖殿则通过圆形天窗制造神圣光感，设计思路各有侧重</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">建筑功能</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">御门听政前更衣<br>赐宴藩王使臣<br>大典前祭祀准备</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px;">登基前先帝灵前受印<br>阅视殿试试卷<br>赐宴前阅览贺表<br>接见外国使节前准备</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">两殿功能相近——均为"典礼前准备空间"；中和殿增加了"阅视殿试试卷"功能，与清代科举制度的繁荣有关</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-weight:700; background:#fdf5ee; color:var(--red-dark);">今日状态</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:var(--red);">仅存台基遗址<br>方形基址可辨</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; text-align:center; font-size:13.5px; color:#1f5491; font-weight:bold;">完整保存<br>位于太和殿与乾清宫之间</td>
+                <td style="border:1px solid #ddd; padding:9px 14px; font-size:13px; color:var(--ink-mid);">华盖殿以遗址形式存在，考古揭示了方形攒尖顶的基址范围；中和殿则以其小巧玲珑的独特造型，成为故宫建筑群中最具辨识度的小殿</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 宫城互鉴判断题 -->
+      <section aria-label="宫城互鉴判断测验" style="margin-top:28px;">
+        <h3 class="subsection-title">宫城互鉴 · 判断测验</h3>
+        <p style="text-align:center; font-size:13.5px; color:var(--ink-mid); margin:0 0 20px;">点击判断正误，了解两座宫城的建筑与历史关系</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+
+          <!-- 判断题1 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">① 明故宫占地面积比北京故宫更大。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">明故宫占地约<strong>101.25万平方米</strong>，北京故宫占地约<strong>72万平方米</strong>。明故宫面积约为北京故宫的1.4倍，是中世纪世界上规模最大的宫殿建筑群，因此本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">数据来源：《明史·舆服志》</p>
+            </div>
+          </div>
+
+          <!-- 判断题2 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">② 北京故宫的建造规制完全独立于明故宫，没有继承关系。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="false">✓ 正确</button>
+              <button class="judge-btn" data-correct="true">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">《明太宗实录》明确记载："凡庙社、郊祀、坛场、宫殿、门阙，规制悉如南京，而高敞壮丽过之。"北京故宫继承了明故宫的规划思想和中轴对称布局，并在此基础上加以发展，故本题判断为<strong style="color:#F44336;">✗ 错误</strong>。</p>
+              <p class="judge-source">资料来源：《明太宗实录》</p>
+            </div>
+          </div>
+
+          <!-- 判断题3 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">③ 奉天殿与太和殿均为"重檐庑殿顶"，属于古代建筑屋顶最高等级。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">重檐庑殿顶是中国古代木构建筑屋顶的最高等级，奉天殿（明故宫）与太和殿（北京故宫）均采用此规制。庑殿顶四面斜坡，前后坡相交形成正脊，两侧斜坡与前后坡相交形成四条垂脊，等级最高，故本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">资料来源：《营造法式》、《中国建筑史》</p>
+            </div>
+          </div>
+
+          <!-- 判断题4 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">④ 明故宫与北京故宫的午门均采用"五凤楼"形制，为重檐庑殿顶。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">南京午门与北京午门均采用"五凤楼"形制（正殿与两侧廊庑形成五组屋脊，形如五凤展翅），屋顶均为重檐庑殿顶（五门殿），是宫城正门的标准形制。故本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">资料来源：《明史·舆服志》、《中国古代建筑史》</p>
+            </div>
+          </div>
+
+          <!-- 判断题5 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">⑤ 华盖殿与中和殿均为方形平面、攒尖顶的特殊殿堂形制。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">华盖殿（南京）与中和殿（北京）均为方形平面配圆形攒尖顶，以"方形圆攒尖"表达"天圆地方"的宇宙观。殿顶立铜铸（镀）金圆顶，象征天穹，极为特殊。故本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">资料来源：《中国建筑史》、《营造法式》</p>
+            </div>
+          </div>
+
+          <!-- 判断题6 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">⑥ 太和殿脊兽共十件，为清代建筑脊饰最高规制，这一配置在奉天殿时代已有先例。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="false">✓ 正确</button>
+              <button class="judge-btn" data-correct="true">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">太和殿垂脊仙人走兽达十件（龙、凤、狮、天马、海马、狻猊、押鱼、獬豸、斗牛、行什），为清代建筑脊饰最高规制。其中"行什"（雷震子形）为太和殿独有，奉天殿时期并无此配置，故本题判断为<strong style="color:#F44336;">✗ 错误</strong>。</p>
+              <p class="judge-source">资料来源：《中国建筑史》</p>
+            </div>
+          </div>
+
+          <!-- 判断题7 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">⑦ 明故宫的建造历时约26年，征发工匠超过20万人。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">明故宫从元至正二十六年（1366年）开始填湖造地，至洪武二十五年（1392年）基本完工，历时约26年。据《明史》记载，朱元璋征发<strong>军民工匠20余万人</strong>参与建造，是中国古代规模最大的宫殿建设工程之一。故本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">资料来源：《明史·舆服志》、《明史·刘基传》</p>
+            </div>
+          </div>
+
+          <!-- 判断题8 -->
+          <div class="judge-card" style="padding:18px; background:rgba(245,237,224,.3); border-radius:10px; border:1px solid var(--border);">
+            <p class="judge-question">⑧ 谨身殿与保和殿均采用重檐歇山顶，为外朝三大殿中等级第二的屋顶规制。</p>
+            <div class="judge-buttons">
+              <button class="judge-btn" data-correct="true">✓ 正确</button>
+              <button class="judge-btn" data-correct="false">✗ 错误</button>
+            </div>
+            <div class="judge-answer" style="display:none; margin-top:12px;">
+              <p class="judge-explanation">谨身殿（南京明故宫）与保和殿（北京故宫）均采用<strong>重檐歇山顶</strong>。歇山顶为第二等屋顶规制（仅次于庑殿顶），因此谨身殿与保和殿的屋顶规制低于采用庑殿顶的奉天殿与太和殿。故本题判断为<strong style="color:#4CAF50;">✓ 正确</strong>。</p>
+              <p class="judge-source">资料来源：《营造法式》、《中国建筑史》</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </section>
+
+    <!-- 遗址保护 -->
+    <section id="protect" class="region" aria-label="残垣守望">
+      <h2 class="section-title">残垣守望</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div style="padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+          <h3 style="margin:0 0 14px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">地面遗存</h3>
+          <ul style="margin:0; padding-left:20px; line-height:2; color:var(--ink-mid); font-size:14px;">
+            <li><strong>午门</strong>：三孔门洞基本保存</li>
+            <li><strong>东华门</strong>：门洞保存较为完整</li>
+            <li><strong>西华门</strong>：门洞保存较为完整</li>
+            <li><strong>奉天门</strong>：仅存遗址</li>
+            <li><strong>五龙桥</strong>：石桥保存完好</li>
+            <li><strong>石柱础</strong>：散落各处，部分保护</li>
+          </ul>
+        </div>
+
+        <div style="padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+          <h3 style="margin:0 0 14px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">保护历程</h3>
+          <ul style="margin:0; padding-left:20px; line-height:2; color:var(--ink-mid); font-size:14px;">
+            <li><strong>1956年</strong>：列为江苏省文物保护单位</li>
+            <li><strong>1988年</strong>：列入全国重点文物保护单位</li>
+            <li><strong>2006年</strong>：明故宫遗址列入国家级保护</li>
+            <li><strong>2011年</strong>：明故宫遗址公园对外开放</li>
+          </ul>
+          <h3 style="margin:16px 0 10px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">遗址公园</h3>
+          <p style="margin:0; line-height:1.8; color:var(--ink-mid); font-size:14px;">明故宫遗址公园占地约29万平方米，主要展示午门、东华门、西华门、五龙桥等历史遗迹，集历史教育、文化休闲于一体。</p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:20px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+        <h3 style="margin:0 0 12px; color:var(--red-dark); font-size:17px; font-family:'楷体','KaiTi',serif;">保护意义</h3>
+        <p style="margin:0; line-height:1.9; color:var(--ink-mid); font-size:14px;">明故宫遗址是南京历史文化的重要象征，保护好这些遗迹对于研究明代历史、建筑和文化具有重要意义。遗址公园的建立既保护了文物，又为市民提供了休闲文化空间，实现了文化遗产保护与城市发展的和谐统一。</p>
+      </div>
+
+      <!-- 游览指南 -->
+      <div id="visitor" style="margin-top:24px; padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto; border-radius:12px; border:1px solid var(--border);">
+        <h3 style="margin:0 0 16px; color:var(--red-dark); font-size:19px; text-align:center; font-family:'楷体','KaiTi',serif;">游览指南</h3>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:20px;">
+          <!-- 开放时间 -->
+          <div style="padding:18px; background:rgba(245,237,224,.4); border-radius:10px; border:1px solid var(--border);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px; font-family:'楷体','KaiTi',serif;">开放时间</h4>
+            <ul style="margin:0; padding-left:16px; line-height:1.9; color:var(--ink-mid); font-size:13.5px;">
+              <li><strong>旺季</strong>（4月—10月）：08:00—18:00</li>
+              <li><strong>淡季</strong>（11月—3月）：08:30—17:30</li>
+              <li><strong>闭园时间</strong>：各出入口准时关闭</li>
+              <li><strong>遗址公园</strong>：免费开放（午门广场区）</li>
+              <li><strong>闭馆日</strong>：周一闭园维护（节假日除外）</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">⚠️ 遇重大活动或恶劣天气可能临时闭园，建议出行前查阅官方公告</p>
+          </div>
+
+          <!-- 交通路线 -->
+          <div style="padding:18px; background:rgba(245,237,224,.4); border-radius:10px; border:1px solid var(--border);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px; font-family:'楷体','KaiTi',serif;">交通路线</h4>
+            <ul style="margin:0; padding-left:16px; line-height:1.9; color:var(--ink-mid); font-size:13.5px;">
+              <li><strong>地铁</strong>：2号线「明故宫站」2号口出，步行约3分钟即达</li>
+              <li><strong>公交</strong>：5路、9路、25路、34路、65路「明故宫站」下车</li>
+              <li><strong>自驾</strong>：导航搜索"明故宫遗址公园"，周边停车场参考：中山东路沿线停车位（收费）</li>
+              <li><strong>共享单车</strong>：中山东路人行道设有停车点</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">地铁2号线可达，与南京博物院仅一站之隔，可安排联游</p>
+          </div>
+
+          <!-- 票务信息 -->
+          <div style="padding:18px; background:rgba(245,237,224,.4); border-radius:10px; border:1px solid var(--border);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px; font-family:'楷体','KaiTi',serif;">票务信息</h4>
+            <ul style="margin:0; padding-left:16px; line-height:1.9; color:var(--ink-mid); font-size:13.5px;">
+              <li><strong>午门广场区</strong>：免费免预约</li>
+              <li><strong>遗址公园核心区</strong>：免费开放</li>
+              <li><strong>讲解服务</strong>：可租赁自助语音导览设备（凭身份证）</li>
+              <li><strong>团体预约</strong>：20人以上团体可提前联系管理处预约免费讲解</li>
+            </ul>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--ink-light);">南京旅游集团官方公众号可查询实时客流与活动信息</p>
+          </div>
+        </div>
+
+        <!-- 游览路线 -->
+        <h4 style="margin:0 0 12px; color:var(--red-dark); font-size:16px; font-family:'楷体','KaiTi',serif;">游览路线推荐</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div style="padding:14px; border-left:4px solid var(--red); background:rgba(139,0,0,.04); border-radius:0 8px 8px 0;">
+            <h5 style="margin:0 0 6px; color:var(--red); font-size:14px;">经典精华游 · 约60分钟</h5>
+            <p style="margin:0; font-size:13px; color:var(--ink-mid); line-height:1.7;">午门（城楼遗址）→ 五龙桥 → 东华门遗址 → 城墙遗址步道 → 西华门遗址 → 遗址公园广场</p>
+            <p style="margin:6px 0 0; font-size:12px; color:var(--ink-light);">适合：时间有限、首次到访游客</p>
+          </div>
+          <div style="padding:14px; border-left:4px solid var(--gold); background:rgba(201,168,76,.06); border-radius:0 8px 8px 0;">
+            <h5 style="margin:0 0 6px; color:#8B6914; font-size:14px;">深度文化游 · 约120分钟</h5>
+            <p style="margin:0; font-size:13px; color:var(--ink-mid); line-height:1.7;">午门广场 → 五龙桥 → 东华门城楼 → 宫城遗址展示区 → 石柱础遗迹 → 遗址陈列馆（室内展厅）</p>
+            <p style="margin:6px 0 0; font-size:12px; color:var(--ink-light);">适合：历史爱好者、研学团队</p>
+          </div>
+          <div style="padding:14px; border-left:4px solid #2a75b3; background:rgba(42,117,179,.05); border-radius:0 8px 8px 0;">
+            <h5 style="margin:0 0 6px; color:#1f5491; font-size:14px;">文博联游 · 约180分钟</h5>
+            <p style="margin:0; font-size:13px; color:var(--ink-mid); line-height:1.7;">明故宫遗址公园（60min）→ 步行至南京博物院（10min）→ 南京博物院主馆（90min）→ 中山陵风景区（需单独安排）</p>
+            <p style="margin:6px 0 0; font-size:12px; color:var(--ink-light);">适合：文化一日游、亲子家庭</p>
+          </div>
+        </div>
+
+        <!-- 实用贴士 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="padding:16px; background:rgba(245,237,224,.4); border-radius:10px; border:1px solid var(--border);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px; font-family:'楷体','KaiTi',serif;">📌 游览贴士</h4>
+            <ul style="margin:0; padding-left:16px; line-height:1.85; color:var(--ink-mid); font-size:13.5px;">
+              <li>午门城楼可登高远眺，视野极佳，拍照打卡推荐</li>
+              <li>遗址公园内绿植丰富，春夏季节遮荫有限，建议携带遮阳伞</li>
+              <li>东华门城楼内侧设有微型展览室，展陈历年出土文物</li>
+              <li>五龙桥北侧石栏保存完好，为明代原构，请勿攀爬</li>
+              <li>遗址公园周边餐饮较少，可前往中山东路商业区或瑞金路用餐</li>
+            </ul>
+          </div>
+          <div style="padding:16px; background:rgba(245,237,224,.4); border-radius:10px; border:1px solid var(--border);">
+            <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px; font-family:'楷体','KaiTi',serif;">🔗 周边联游</h4>
+            <ul style="margin:0; padding-left:16px; line-height:1.85; color:var(--ink-mid); font-size:13.5px;">
+              <li><strong>南京博物院</strong>：步行约10分钟，馆藏明代文物丰富，免费预约制</li>
+              <li><strong>中山陵风景区</strong>：地铁2号线至苜蓿园站，约25分钟</li>
+              <li><strong>梅花山·明孝陵</strong>：地铁2号线至苜蓿园站，世界文化遗产</li>
+              <li><strong>六朝博物馆</strong>：总统府旁，步行约15分钟</li>
+              <li><strong>郑和纪念馆</strong>：太平公园内，地铁3号线可达</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top:16px; padding:12px; background:rgba(201,168,76,.08); border-radius:8px; font-size:13px; color:#6d4c1d; line-height:1.7; border-left:4px solid var(--gold);">
+          💡 <strong>温馨提示：</strong>明故宫遗址公园为开放式遗址公园，部分区域地面不平，请注意安全。建议穿着舒适平底鞋，配合语音导览或扫码讲解，体验更为丰富。更多信息请关注"南京市文旅局"官方平台。
+        </p>
+      </div>
+    </section>
+
+    <!-- 关于本项目 -->
+    <section id="about" class="region" aria-label="数营志略">
+      <h2 class="section-title">数营志略</h2>
+
+      <div class="project-card collapsed" style="border:1px solid var(--border); border-radius:12px; padding:24px; background:url('picture/background4.jpg') repeat; background-size:200px auto;">
+        <h3 class="project-title" style="margin:0 0 16px; color:var(--red-dark); font-size:19px; text-align:center; cursor:pointer; font-family:'楷体','KaiTi',serif;">项目背景 <span class="toggle-icon">▼</span></h3>
+        <div class="project-content">
+          <p style="margin:0 0 16px; line-height:1.9; color:var(--ink-mid); font-size:15px;">"金陵故宫梦"数字营造项目旨在通过现代数字技术重现南京明故宫的历史风貌，传承和弘扬中华优秀传统文化。</p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:16px;">
+            <div>
+              <h4 style="margin:0 0 10px; color:var(--red-dark); font-size:15px;">项目目标</h4>
+              <ul style="margin:0; padding-left:20px; line-height:2; color:var(--ink-mid); font-size:14px;">
+                <li>通过数字技术重现明故宫历史风貌</li>
+                <li>展示明故宫的历史文化和建筑艺术</li>
+                <li>增强公众对文化遗产的保护意识</li>
+                <li>传承中华优秀传统文化</li>
+              </ul>
+            </div>
+          <h4 style="margin:16px 0 10px; color:var(--red-dark); font-size:15px;">项目意义</h4>
+          <p style="margin:0; line-height:1.9; color:var(--ink-mid); font-size:15px;">南京明故宫是中国古代宫殿建筑的杰作，承载着丰富的历史信息和深厚的文化内涵。通过本项目的数字重现，让更多人了解和关注这一重要的文化遗产，感受中华文明的魅力，增强文化自信。</p>
+        </div>
+
+        <!-- 参考文献 -->
+        <div class="reference-card collapsed" style="margin-top:28px; padding-top:20px; border-top:1.5px solid var(--border);">
+          <h4 class="reference-title" style="margin:0 0 16px; color:var(--red-dark); font-size:17px; text-align:center; cursor:pointer; font-family:'楷体','KaiTi',serif;">参考文献资料 <span class="toggle-icon">▼</span></h4>
+          <div class="reference-content">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <h5 style="margin:0 0 8px; color:var(--red-dark); font-size:13px;">一、权威史籍</h5>
+                <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                  <li>《明史》（清·张廷玉等撰）</li>
+                  <li>《明太宗实录》</li>
+                  <li>《明史·舆服志》</li>
+                  <li>《明史·刘基传》</li>
+                  <li>《明史·职官志》</li>
+                </ul>
+              </div>
+              <div>
+                <h5 style="margin:0 0 8px; color:var(--red-dark); font-size:13px;">二、古代建筑著作</h5>
+                <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                  <li>《营造法式》（北宋·李诫著）</li>
+                  <li>《天工开物》（明·宋应星著）</li>
+                  <li>《工程做法则例》（清代工部编）</li>
+                  <li>《周礼·考工记》</li>
+                  <li>《明会典》</li>
+                </ul>
+              </div>
+              <div>
+                <h5 style="margin:0 0 8px; color:var(--red-dark); font-size:13px;">三、学术著作</h5>
+                <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                  <li>《中国建筑史》（梁思成著）</li>
+                  <li>《中国古代建筑史》（傅熹年著）</li>
+                  <li>《中国科学技术史》（李约瑟著）</li>
+                  <li>《中国古建筑图解》（楼庆西著）</li>
+                  <li>《南京明故宫遗址考古研究》</li>
+                </ul>
+              </div>
+              <div>
+                <h5 style="margin:0 0 8px; color:var(--red-dark); font-size:13px;">四、官方机构资料</h5>
+                <ul style="margin:0; padding-left:18px; line-height:1.8; color:var(--ink-mid); font-size:13px;">
+                  <li>南京市文物局官方资料</li>
+                  <li>江苏省文物保护单位档案</li>
+                  <li>全国重点文物保护单位记录</li>
+                  <li>南京博物院藏品与研究资料</li>
+                  <li>南京市博物馆考古档案</li>
+                </ul>
+              </div>
+            </div>
+            <p style="margin:16px 0 0; padding:12px; background:rgba(201,168,76,.08); border-radius:8px; font-size:12px; color:var(--ink-light); line-height:1.7; border-left:3px solid var(--gold);">
+              <strong>特别说明：</strong>本网站所引用的历史事件、建筑数据、科技成就等均来源于上述权威文献资料。所有史料均经过严格考证，力求做到数据真实可靠。本网站内容聚焦于建筑技术、科学家精神、建筑著作和营造技艺，弘扬中华优秀传统文化。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 底部信息 -->
+  <footer style="text-align:center; padding:30px 20px; background:url('picture/background3.jpg') repeat; background-size:200px auto; color:#333; font-size:14px; border-top:2px solid var(--border);">
+    <div style="display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap;">
+      <p style="margin:0; font-size:16px; font-family:'楷体','KaiTi',serif;">金陵故宫梦数字营造项目</p>
+  </footer>
+
+  <!-- 浮动按钮 -->
+  <button id="musicToggle" class="music-toggle" aria-label="音效开关" title="音效开关" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+  </button>
+  <button id="fabTop" class="fab-top" aria-label="返回顶部" title="返回顶部" type="button">↑</button>
+
+  <script src="js/main.js?v=1774167407"></script>
+
+<script>if(location.hash!="#norefresh"){var v="1774167233";var links=document.querySelectorAll("link[rel=stylesheet]");links.forEach(function(l){if(l.href.indexOf("v=")<0)l.href+="?v="+v});}</script>
+<script>
+window.addEventListener("pageshow", function(e) {
+  if (e.persisted) { window.location.reload(true); }
+}, false);
+</script>
+</body>
+</html>

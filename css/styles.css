@@ -1,0 +1,1880 @@
+/* ============================================================
+   明故宫数字营造 · 升级版样式
+   设计理念：沉浸式古典美学 + 现代信息交互
+   ============================================================ */
+
+/* ── 设计令牌 ── */
+:root {
+  --red:        #c8141e;
+  --red-dark:   #8B0000;
+  --red-light:  #e8474f;
+  --gold:       #c9a84c;
+  --gold-light: #f2d98a;
+  --gold-pale:  #fdf6e3;
+  --ink:        #2c2416;
+  --ink-mid:    #5a4a3a;
+  --ink-light:  #8a7a6a;
+  --bg:         #fbf8f2;
+  --bg-warm:    #f5ede0;
+  --border:     rgba(139,0,0,.18);
+  --shadow-sm:  0 2px 8px rgba(139,0,0,.08);
+  --shadow-md:  0 6px 24px rgba(139,0,0,.12);
+  --shadow-lg:  0 12px 40px rgba(139,0,0,.16);
+  --radius:     12px;
+  --radius-sm:  8px;
+  --transition: .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── 基础重置 ── */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* 防横向溢出，溢出在 html 层截断 */
+  width: 100%;
+  max-width: 100vw;
+}
+body {
+  margin: 0;
+  min-width: 100%;
+  max-width: 100%;
+  font-family: "楷体", "KaiTi", "STKaiti", "Noto Serif CJK SC", serif;
+  color: var(--ink);
+  background: var(--bg) url('../picture/background2.jpg') repeat;
+  background-size: 200px auto;
+  overflow-x: visible; /* 不能 hidden，否则 sticky/fixed 全部失效 */
+  width: 100%;
+}
+h1,h2,h3,h4,h5 { margin: 0; }
+img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ── 滚动条美化 ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1ece4; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
+
+/* ── 进度条（页面阅读进度） ── */
+#read-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red-dark), var(--gold), var(--red));
+  z-index: 99999;
+  transition: width .1s linear;
+  box-shadow: 0 0 8px rgba(200,20,30,.5);
+}
+
+/* ── 开场动画 ── */
+.intro-animation {
+  position: fixed;
+  inset: 0;
+  background: #1a0a05;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+.lottie-container {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lottie-container svg { width: 100% !important; height: 100% !important; display: block; }
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50%       { opacity: .7; transform: translateX(-50%) scale(1.05); }
+}
+
+/* ── 顶部栏 ── */
+.topbar {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  background: url('../picture/background3.jpg') repeat;
+  background-size: 200px auto;
+  border-bottom: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 6px;
+  height: 2px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.4), transparent);
+  pointer-events: none;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "楷体", "KaiTi", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--red-dark);
+  letter-spacing: .5px;
+  background: transparent;
+}
+.logo-image { height: 64px; width: auto; }
+.logo-text { white-space: nowrap; }
+.university-info { display: flex; align-items: center; gap: 10px; }
+.university-text { font-family: "楷体", "KaiTi", serif; font-size: 18px; color: var(--ink); font-weight: bold; }
+.university-logo { height: 30px; width: auto; border-radius: 4px; }
+
+/* ── 顶部导航 ── */
+.topnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px;
+  background: url('../picture/background2.jpg') repeat;
+  background-size: 200px auto;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 12px rgba(139,0,0,.1);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: auto;
+  min-height: 40px;
+  max-height: 60px;
+}
+
+/* 导航栏内部容器，用于确保内容居中 */
+.topnav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  width: auto;
+  max-width: 100%;
+}
+
+/* 确保导航栏在所有屏幕尺寸下都单行显示且可滚动 */
+@media (min-width: 568px) and (max-width: 896px) and (min-height: 400px) {
+  .topnav {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+  .topnav-container {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+}
+
+@media (max-width: 896px) {
+  .topnav {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+  .topnav-container {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+}
+
+/* 大屏幕导航栏样式 */
+@media (min-width: 897px) {
+  .topnav {
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+  .topnav-container {
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}
+.topnav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: var(--red-dark);
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: "楷体", "KaiTi", serif;
+  white-space: nowrap;
+  transition: var(--transition);
+  border: 1px solid var(--gold);
+  background: rgba(201,168,76,.2);
+}
+.topnav-item:hover {
+  background: rgba(201,168,76,.2);
+  border-color: var(--gold);
+  color: var(--red-dark);
+}
+.topnav-item.active {
+  background: var(--red-dark);
+  color: #fff;
+  border-color: var(--red-dark);
+  box-shadow: var(--shadow-sm);
+}
+.topnav-item .label { font-size: 13px; }
+
+/* 导航悬浮提示 */
+.topnav-item::before {
+  content: attr(title);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,10,5,.92);
+  color: #f5ede0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: normal;
+  max-width: 300px;
+  min-width: 180px;
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 1001;
+  pointer-events: none;
+  border: 1px solid rgba(201,168,76,.3);
+}
+.topnav-item::after {
+  content: '';
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: rgba(26,10,5,.92);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 1001;
+}
+.topnav-item:hover::before,
+.topnav-item:hover::after { opacity: 1; visibility: visible; }
+.topnav-item:first-child::before { left: 0; transform: none; }
+.topnav-item:last-child::before  { left: auto; right: 0; transform: none; }
+
+/* ── 首页视频 ── */
+.hero-video {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  max-width: min(1100px, 100vw);
+}
+.hero-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(26,10,5,.3));
+  pointer-events: none;
+}
+.hero-video video { width: 100%; height: auto; display: block; }
+
+/* ── 内容区域 ── */
+.content {
+  padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 响应式内容区域 */
+@media (max-width: 1100px) {
+  .content {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 896px) {
+  .content {
+    padding: 0 12px;
+  }
+}
+
+/* ── 区域通用 ── */
+.region {
+  padding: 32px 28px;
+  background: url('../picture/background.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius);
+  position: relative;
+  border: 1.5px solid var(--border);
+  margin-bottom: 24px;
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+.region:hover { box-shadow: var(--shadow-md); }
+.region::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: var(--radius) var(--radius) 0 0;
+  opacity: .7;
+}
+.region::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 8px;
+  height: 2px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.3), transparent);
+  pointer-events: none;
+}
+
+/* ── 标题系统 ── */
+.section-title {
+  color: var(--red-dark);
+  font-weight: 700;
+  font-family: "楷体", "KaiTi", serif;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 24px;
+  padding-bottom: 14px;
+  position: relative;
+  letter-spacing: 2px;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.subsection-title {
+  color: var(--red-dark);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 16px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(139,0,0,.2);
+}
+
+/* ── 特色卡片 ── */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 0 0 8px;
+  margin: 20px 0;
+}
+.feature-card {
+  padding: 20px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red-dark), var(--gold));
+  opacity: 0;
+  transition: var(--transition);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-title {
+  color: var(--red-dark);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139,0,0,.15);
+}
+.feature-content {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+}
+
+/* ── 时间轴 ── */
+.timeline {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 20px;
+  scrollbar-width: thin;
+  justify-content: flex-start;
+}
+.timeline::-webkit-scrollbar { height: 4px; }
+.timeline::-webkit-scrollbar-track { background: rgba(139,0,0,.05); border-radius: 2px; }
+.timeline::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+.year {
+  background: var(--red-dark);
+  border: 1px solid var(--red-dark);
+  color: #fff;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: "楷体", "KaiTi", serif;
+  white-space: nowrap;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.year:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.year.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 年份详情 */
+.year-detail {
+  margin-top: 20px;
+  padding: 24px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  animation: fadeInUp .4s ease;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 折叠卡片通用 ── */
+.achievement-card,
+.craft-card,
+.scientist-card,
+.reference-card {
+  transition: var(--transition);
+}
+.project-card {
+}
+.achievement-card.collapsed .achievement-content,
+.craft-card.collapsed .craft-content,
+.scientist-card.collapsed .scientist-content,
+.project-card.collapsed .project-content,
+.reference-card.collapsed .reference-content {
+  display: none;
+}
+.toggle-icon { display: inline-block; }
+.achievement-card:not(.collapsed) .toggle-icon,
+.craft-card:not(.collapsed) .toggle-icon,
+.scientist-card:not(.collapsed) .toggle-icon,
+.project-card:not(.collapsed) .toggle-icon,
+.reference-card:not(.collapsed) .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* ── 文化理念 ── */
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0;
+}
+.culture-item {
+  padding: 20px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.culture-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+.culture-title {
+  color: var(--red-dark);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139,0,0,.15);
+  text-align: center;
+}
+.culture-visual {
+  margin-bottom: 12px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #f5ede0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 15px;
+}
+.culture-visual img { 
+  max-height: 150px;
+  width: auto;
+  object-fit: contain;
+  transition: transform .5s ease;
+}
+.culture-item:hover .culture-visual img { transform: scale(1.04); }
+.culture-content {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+}
+
+/* ── 浮动按钮 ── */
+.music-toggle,
+.fab-top {
+  position: fixed;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--red-dark);
+  background: var(--red-dark);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  z-index: 500;
+  backdrop-filter: blur(4px);
+}
+.music-toggle { bottom: 80px; }
+.fab-top { bottom: 28px; font-size: 18px; font-weight: bold; }
+.music-toggle:hover,
+.fab-top:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+  transform: scale(1.1);
+}
+.music-toggle.muted {
+  opacity: .8;
+  border: 2px solid var(--gold);
+  background: rgba(251,248,242,.95);
+  color: var(--red-dark);
+}
+
+/* ── 数据统计卡片 ── */
+.stat-card {
+  text-align: center;
+  padding: 20px 16px;
+  background: url('../picture/background5.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--red);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-top: 6px;
+}
+
+/* ── 宫殿平面图交互 ── */
+.palace-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+.palace-map-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.palace-map-container svg .palace-zone {
+  cursor: pointer;
+  transition: filter .2s ease;
+}
+.palace-map-container svg .palace-zone:hover {
+  filter: brightness(1.25) drop-shadow(0 0 6px rgba(201,168,76,.8));
+  cursor: pointer;
+}
+.palace-zone-active {
+  filter: brightness(1.2) drop-shadow(0 0 6px rgba(201,168,76,.8)) !important;
+}
+.palace-tooltip {
+  position: absolute;
+  background: rgba(26,10,5,.95);
+  color: #f5ede0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 260px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s ease;
+  z-index: 9999;
+  border: 1.5px solid rgba(201,168,76,.5);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+  font-family: "楷体","KaiTi",serif;
+}
+.palace-tooltip.visible { opacity: 1; }
+
+.palace-tooltip hr {
+  border: none;
+  border-top: 1px solid rgba(201,168,76,.35);
+  margin: 6px 0;
+}
+
+/* ── 对比表格 ── */
+.compare-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 auto;
+}
+
+.compare-table {
+  width: 100% !important;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 14px;
+  margin: 0 auto;
+}
+.compare-table th {
+  background: var(--red-dark);
+  color: #fff;
+  padding: 10px 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+.compare-table td {
+  border: 1px solid rgba(139,0,0,.15);
+  padding: 9px 12px;
+  transition: background var(--transition);
+}
+.compare-table tr:nth-child(even) td { background: rgba(201,168,76,.06); }
+.compare-table tr:hover td { background: rgba(201,168,76,.15); }
+
+/* 强制表格占满容器宽度并居中 */
+.compare-table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.compare-table {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse !important;
+}
+
+.compare-table th,
+.compare-table td {
+  width: 33.333% !important;
+  text-align: center !important;
+  padding: 10px 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* 确保所有包含表格的容器都占满宽度 */
+section[aria-label="宫城互鉴"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+section[aria-label="宫城互鉴"] > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+}
+
+section[aria-label="宫城互鉴"] > div > div[style*="overflow-x:auto"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+section[aria-label="宫城互鉴"] > div > div[style*="overflow-x:auto"] > table {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* 全局确保表格占满宽度 */
+.compare-table {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  border-collapse: collapse !important;
+}
+
+.compare-table-wrap {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+/* 确保表格列宽平均分配 */
+.compare-table th,
+.compare-table td {
+  width: 33.333% !important;
+  text-align: center !important;
+  padding: 10px 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* 确保宫城互鉴section占满宽度 */
+section[aria-label="宫城互鉴"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+section[aria-label="宫城互鉴"] > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+}
+
+section[aria-label="宫城互鉴"] > div > div[style*="overflow-x:auto"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+section[aria-label="宫城互鉴"] > div > div[style*="overflow-x:auto"] > table {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* ── 章节过渡动画 ── */
+.region {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease, box-shadow var(--transition);
+}
+.region.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   全套响应式 · 手机横屏优先优化
+   适配场景：手机竖屏、手机横屏、平板横屏、台式机
+   核心策略：横屏充分利用屏幕宽度，多列并排
+═══════════════════════════════════════════════════════════ */
+
+/* ── ① 手机横屏（视口宽度 568px–896px，高度 ≥ 400px）
+      桌面浏览器窄窗口最高约 500–600px，永远达不到 400px 高度 → 不会误触发 ── */
+@media (min-width: 568px) and (max-width: 896px) and (min-height: 400px) {
+  /* ── 全局防溢出（html 层截断，body 保持 sticky 可用）── */
+  html { overflow-x: hidden !important; }
+  body { overflow-x: visible !important; width: 100% !important; max-width: 100% !important; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ── 顶层容器全部限制在视口内 ── */
+  .topbar  { width: 100% !important; max-width: 100vw !important; overflow: hidden; }
+  .topnav  { 
+    width: 100% !important; 
+    max-width: 100vw !important; 
+    overflow-x: auto !important; 
+    overflow-y: hidden !important; 
+  }
+  .hero-video { width: 100% !important; max-width: 100vw !important; }
+  .content    { width: 100% !important; max-width: 100vw !important; overflow-x: hidden; padding: 0 !important; }
+
+  /* ── 所有区块容器禁止横向撑开 ── */
+  .region {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* ── 宫城图谱 SVG：全局封死 overflow ── */
+  .palace-map-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  .palace-map-container svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+  /* ── 对比表格容器的滚动设置 ── */
+  .compare-table-wrap { overflow-x: auto; }
+
+  /* 内容区扩大 */
+  .content { padding: 0 16px; }
+
+  /* ── 导航：横屏展示更多标签 ── */
+  .topnav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    justify-content: center !important;
+    padding: 5px 12px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+  }
+  .topnav::-webkit-scrollbar { height: 3px; }
+  .topnav::-webkit-scrollbar-thumb { background: var(--gold); }
+  .topnav-item { font-size: 11px; padding: 5px 9px; }
+  .topnav-item::before,
+  .topnav-item::after { display: none; }
+
+  /* 顶部栏 */
+  .topbar { padding: 6px 16px; }
+  .logo-image { height: 46px; }
+  .logo-text { font-size: 17px; }
+  .university-text { font-size: 15px; }
+  .university-logo { height: 26px; }
+
+  /* 区域：充分利用横屏宽度 */
+  .region { padding: 20px 20px; margin-bottom: 16px; }
+
+  /* 标题 */
+  .section-title { font-size: 20px; margin-bottom: 16px; }
+  .subsection-title { font-size: 16px; }
+
+  /* 概览：左右两栏，充分利用横屏宽度 */
+  #overview .region > div:first-child {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    gap: 18px !important;
+    align-items: center !important;
+  }
+  #overview .region > div:first-child > div:first-child { padding: 18px !important; }
+  #overview .region > div:first-child img { max-height: 200px; object-fit: contain; }
+
+  /* 三个信息卡：横屏时保持3列 */
+  #overview > div:nth-child(3) {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+  #overview > div:nth-child(3) > div { padding: 12px !important; }
+
+  /* 历史溯源：三卡片横排 */
+  .feature-cards { grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+  .feature-card { padding: 16px; }
+  .feature-title { font-size: 14px; }
+  .feature-content { font-size: 12.5px; line-height: 1.75; }
+
+  /* 时间轴：横屏一行排列 */
+  .timeline { padding: 10px 16px; }
+  .year { font-size: 12px; padding: 6px 12px; }
+  .year-detail { padding: 18px; }
+  .year-detail > h4 { font-size: 16px !important; }
+  .year-detail > p { font-size: 13px !important; }
+
+  /* 宫殿图谱：充分利用宽度 */
+  .palace-map-container { padding: 14px; }
+  .palace-map-container svg { max-height: 320px; }
+  #palace-info { max-height: 240px; }
+
+  /* 考古实证：文物图2×3横排 */
+  #archaeology .region > div:nth-child(2) {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+  #archaeology .region > div:nth-child(3) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  #archaeology .region > div:nth-child(3) > div { padding: 14px !important; }
+  #archaeology .region > div:nth-child(3) > div > div:nth-child(1) {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  #archaeology .region > div:nth-child(3) > div > div:nth-child(1) > div { padding: 12px 6px !important; }
+
+  /* 考古选择题：2×3横排 */
+  #archaeology section[aria-label="考古实证知识问答"] > div {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+  }
+  #archaeology section[aria-label="考古实证知识问答"] > div > div { padding: 14px !important; }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-question { font-size: 14px !important; }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-options {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-button { font-size: 12.5px !important; padding: 8px 10px !important; }
+
+  /* 筑业煌煌：三卡片横排 */
+  #achievement > div:first-child {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+    margin-bottom: 14px !important;
+  }
+  #achievement > div:first-child > div { padding: 16px !important; }
+
+  /* 筑业统计 */
+  #achievement > div:last-of-type {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  /* 匠造薪传 */
+  #scientist > div:first-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  #scientist > div:first-child > div { padding: 18px !important; }
+
+  /* 营法典籍 */
+  #book > div {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+  }
+  #book > div > div { padding: 16px !important; }
+
+  /* 工艺解析 */
+  #craft > div:first-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  #craft > div:first-child > div { padding: 18px !important; }
+
+  /* 文化理念 */
+  .culture-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .culture-item { padding: 16px; }
+  .culture-title { font-size: 15px; }
+  .culture-content { font-size: 13px; }
+
+  /* 宫城互鉴：判断题横屏一行两个（4行×2列） */
+  section[aria-label="宫城互鉴判断测验"] > div:last-child {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] > div:last-child > div { padding: 14px !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-question { font-size: 13.5px !important; }
+  
+  /* 对比表格横屏居中 */
+  section[aria-label="宫城互鉴"] .compare-table-wrap,
+  section[aria-label="宫城互鉴"] div[style*="overflow-x:auto"] {
+    display: flex !important;
+    justify-content: center !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+  section[aria-label="宫城互鉴"] .compare-table {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] .judge-btn { font-size: 13px !important; padding: 7px 14px !important; min-width: 70px !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-answer { font-size: 12.5px !important; }
+
+  /* 遗址保护 */
+  #protect > div:first-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  #protect > div:last-of-type { padding: 18px !important; }
+  #protect > div:last-of-type > div:nth-child(1) {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(4) {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(6) {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(7) { padding: 10px 14px !important; }
+
+  /* ── 浮动按钮：横屏底部右侧 ── */
+  .music-toggle { bottom: 16px; right: 16px; }
+  .fab-top { bottom: 16px; right: 68px; }
+  
+  /* 导航栏横屏单行显示 */
+  .topnav {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    overflow-x: auto !important;
+  }
+
+  /* 问答 */
+  .qa-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .qa-card { padding: 14px; }
+  .qa-question { font-size: 13.5px; }
+  .qa-answer { font-size: 12.5px; }
+}
+
+/* ── ② 手机竖屏（宽高比 ≤ 1，宽度 ≤ 896px）── */
+@media (max-aspect-ratio: 1/1) and (max-width: 896px),
+       (orientation: portrait) and (max-width: 896px) {
+  /* 全局防溢出（html 层截断，body 保持 sticky） */
+  html { overflow-x: hidden !important; }
+  body { overflow-x: visible !important; width: 100% !important; max-width: 100% !important; }
+  * { box-sizing: border-box; }
+  
+  /* 修复文本溢出和div边界问题 */
+  div {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  /* 确保所有容器不超出父元素 */
+  .region > div {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 顶部栏 */
+  .topbar { padding: 6px 12px; flex-wrap: wrap; gap: 6px; }
+  .logo-image { height: 42px; }
+  .logo-text { font-size: 15px; }
+  .university-text { font-size: 13px; }
+  .university-logo { height: 24px; }
+
+  /* 顶部导航 */
+  .topnav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+    padding: 4px 10px;
+    gap: 4px;
+  }
+  .topnav::-webkit-scrollbar { height: 3px; }
+  .topnav-item { font-size: 10.5px; padding: 4px 7px; white-space: nowrap; }
+  .topnav-item::before, .topnav-item::after { display: none; }
+
+  /* 内容区 */
+  .content { padding: 0 12px; }
+  .region { padding: 14px 12px; margin-bottom: 14px; }
+  .section-title { font-size: 18px; letter-spacing: 1px; }
+  .subsection-title { font-size: 15px; }
+
+  /* ── 概览 ── */
+  #overview > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #overview > div:first-child img { max-height: 200px; object-fit: contain; }
+  /* 三个信息卡：竖屏时一行一个（3行） */
+  #overview > div:nth-child(3),
+  #visitor div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #visitor div[style*="grid-template-columns:1fr 1fr 1fr"] > div {
+    padding: 16px !important;
+  }
+
+  /* ── 历史溯源 ── */
+  .feature-cards { grid-template-columns: 1fr; gap: 10px; }
+  .feature-card { padding: 14px; }
+  .feature-title { font-size: 14px; }
+  .feature-content { font-size: 12.5px; line-height: 1.8; }
+
+  /* ── 时间轴 ── */
+  .timeline { padding: 8px 12px; overflow-x: auto; }
+  .year { font-size: 11.5px; padding: 5px 10px; }
+  .year-detail { padding: 14px; }
+  .year-detail > h4 { font-size: 15px !important; }
+  .year-detail > p { font-size: 13px !important; }
+
+  /* ── 问答（金陵肇建） ── */
+  .qa-container { grid-template-columns: 1fr; gap: 10px; }
+  .qa-card { padding: 13px; }
+  .qa-question { font-size: 13px; }
+  .qa-toggle { font-size: 11.5px; padding: 5px 10px; }
+  .qa-answer { font-size: 12.5px; }
+
+  /* ── 宫殿图谱 ── */
+  .palace-map-container { padding: 10px; }
+  .palace-map-container svg { max-height: 280px; }
+  #palace-info { max-height: 180px; }
+  #palace-info h4 { font-size: 15px; }
+  #palace-info .building-detail { font-size: 12px; }
+
+  /* ── 考古实证：两栏图文 ── */
+  #archaeology > div:nth-child(2) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #archaeology > div:nth-child(3) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  /* 代表性出土文物：竖屏单列 */
+  #archaeology > h3 + div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  /* 统计区：竖屏单列（5个stat-card一行一个，共5行） */
+  #archaeology div[style*="grid-template-columns:repeat(5,1fr)"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #archaeology div[style*="grid-template-columns:repeat(5,1fr)"] > .stat-card {
+    padding: 16px !important;
+  }
+  #archaeology > div:nth-child(3) > div > div:nth-child(1) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #archaeology > div:nth-child(3) > div > div:nth-child(1) > div { padding: 12px !important; }
+
+  /* ── 考古选择题 ── */
+  #archaeology section[aria-label="考古实证知识问答"] { margin-top: 20px; }
+  #archaeology section[aria-label="考古实证知识问答"] > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #archaeology section[aria-label="考古实证知识问答"] > div > div { padding: 13px !important; }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-question { font-size: 13.5px !important; }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-options {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-button {
+    font-size: 12px !important;
+    padding: 8px 8px !important;
+  }
+  #archaeology section[aria-label="考古实证知识问答"] .choice-result { font-size: 12.5px !important; }
+
+  /* ── 筑业煌煌 ── */
+  #achievement > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #achievement > div:first-child > div { padding: 14px !important; }
+  #achievement > div:last-of-type {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* ── 匠造薪传 ── */
+  #scientist div[style*="grid-template-columns: 1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #scientist div[style*="grid-template-columns: 1fr 1fr"] > .scientist-card {
+    padding: 20px !important;
+  }
+
+  /* ── 营法典籍 ── */
+  #book > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #book > div > div {
+    padding: 16px !important;
+  }
+
+  /* ── 工艺解析 ── */
+  #craft div[style*="grid-template-columns:1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #craft div[style*="grid-template-columns:1fr 1fr"] > .craft-card {
+    padding: 20px !important;
+  }
+
+  /* ── 文化理念 ── */
+  .culture-grid { grid-template-columns: 1fr; gap: 12px; }
+  .culture-item { padding: 14px; }
+  .culture-title { font-size: 14px; }
+  .culture-content { font-size: 12.5px; }
+  .culture-visual { min-height: 140px; }
+
+  /* ── 宫城互鉴：对比表横向滚动 ── */
+  .compare-table { font-size: 11.5px; white-space: nowrap; }
+  .compare-table th, .compare-table td { padding: 6px 8px; min-width: 100px; }
+  .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* ── 宫城互鉴判断题：竖屏2列，8题分4行 ── */
+  section[aria-label="宫城互鉴判断测验"] { margin-top: 20px; }
+  section[aria-label="宫城互鉴判断测验"] > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] > div:last-child > div { padding: 13px !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-question { font-size: 13px !important; line-height: 1.5 !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-buttons {
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] .judge-btn {
+    font-size: 12.5px !important;
+    padding: 6px 10px !important;
+    min-width: 64px !important;
+    flex: 1 !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] .judge-answer { font-size: 12px !important; padding: 10px !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-source { font-size: 11px !important; }
+
+  /* ── 遗址保护 ── */
+  #protect > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(1) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(4) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #protect > div:last-of-type > div:nth-child(6) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  /* 游览路线：三列→单列 */
+  #protect > div:last-of-type > div:nth-child(4) > div {
+    border-left-width: 4px !important;
+  }
+  /* 游览贴士/周边联游：2列 */
+  #protect > div:last-of-type > div:nth-child(6) {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* ── 选择题通用 ── */
+  .choice-result { font-size: 12.5px; padding: 12px; }
+
+  /* 统计数字 ── */
+  .stat-number { font-size: 20px; }
+  .stat-label { font-size: 11.5px; }
+  .stat-card { padding: 14px 10px; }
+  
+  /* 4列工程数据：竖屏单列 */
+  #achievement > div:nth-child(2) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  /* 2列科学家卡片：竖屏单列 */
+  #scientist > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  /* 5列考古统计：竖屏单列 */
+  #archaeology > div:nth-child(3) > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /* 3列概览信息：竖屏单列 */
+  #overview > div:nth-child(2) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* ── 浮动按钮 ── */
+  .music-toggle { bottom: 14px; right: 12px; width: 38px; height: 38px; }
+  .fab-top { bottom: 14px; right: 58px; width: 38px; height: 38px; font-size: 15px; }
+  
+  /* 底部p标签字号小一号 */
+  footer p:last-child {
+    font-size: 11px !important;
+  }
+
+  /* ── 对比表格可滚动 ── */
+  .compare-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── ③ 超小屏竖屏（< 380px）── */
+@media (max-width: 379px) {
+  .logo-image { height: 36px; }
+  .logo-text { font-size: 13px; }
+  .university-text { font-size: 11px; }
+  .topnav-item { font-size: 9.5px; padding: 3px 5px; }
+  .section-title { font-size: 16px; }
+  .subsection-title { font-size: 13.5px; }
+  .qa-question { font-size: 12.5px; }
+  .choice-question { font-size: 13px; }
+  .judge-question { font-size: 13px; }
+  /* 文物图超小屏单列 */
+  #archaeology > div:nth-child(3) > div > div:nth-child(1) {
+    grid-template-columns: 1fr !important;
+  }
+  /* 判断题超小屏单列 */
+  section[aria-label="宫城互鉴判断测验"] > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+  section[aria-label="宫城互鉴判断测验"] .judge-question { font-size: 12.5px !important; }
+  section[aria-label="宫城互鉴判断测验"] .judge-btn {
+    font-size: 12px !important;
+    min-width: 60px !important;
+  }
+}
+
+/* ── ③ 台式机 & 大平板（> 896px）── */
+@media (min-width: 897px) {
+  /* 保持原有桌面样式，无需调整 */
+}
+
+/* ── ④ 超宽屏 / 平板横屏（897px–1100px）── */
+@media (min-width: 897px) and (max-width: 1100px) {
+  .topnav-item { padding: 5px 10px; }
+  .topnav-item .label { font-size: 12px; }
+
+  /* 导航提示小屏化 */
+  .topnav-item::before { max-width: 240px; font-size: 11px; }
+
+  /* 宫殿图谱横屏宽度适配 */
+  .palace-map-container { max-width: 100%; }
+  #palace-info { max-height: 280px; }
+}
+
+/* ── ⑥ 大平板竖屏（> 768px & 竖屏）── */
+@media (min-width: 769px) and (max-width: 896px) {
+  .feature-cards { grid-template-columns: 1fr; }
+  .culture-grid { grid-template-columns: 1fr 1fr; }
+  .qa-container { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── ⑦ 大平板横屏（> 896px）── */
+@media (min-width: 769px) and (max-width: 1100px) {
+  /* 保持桌面样式自然延伸 */
+  /* 导航栏横屏单行显示 */
+  .topnav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── 通用横屏导航单行显示 ── */
+@media (orientation: landscape) {
+  .topnav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: center !important;
+  }
+  /* 判断测验横屏2列4行 */
+  section[aria-label="宫城互鉴判断测验"] > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ── 横屏提示 ── */
+.orientation-hint {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+  animation: orientFadeIn .35s ease;
+}
+@keyframes orientFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.orientation-hint > div {
+  animation: orientSlideUp .35s cubic-bezier(.4,0,.2,1);
+}
+@keyframes orientSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── 图片懒加载占位 ── */
+img[loading="lazy"] {
+  background: linear-gradient(135deg, #f5ede0, #e8d8c0);
+}
+
+/* ── 引用块 ── */
+.quote-block {
+  padding: 14px 20px;
+  background: url('../picture/background5.jpg') repeat;
+  background-size: 200px auto;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 12px 0;
+  font-style: italic;
+  color: var(--ink-mid);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.quote-source {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-top: 6px;
+  font-style: normal;
+}
+
+/* ── 标签徽章 ── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--gold-pale);
+  color: var(--red-dark);
+  border: 1px solid rgba(201,168,76,.4);
+}
+
+/* ── 数据可视化 SVG ── */
+.data-svg-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border: 1px solid var(--border);
+  padding: 16px;
+}
+
+/* ── 宫殿区域高亮 ── */
+.palace-zone-active rect,
+.palace-zone-active polygon,
+.palace-zone-active path {
+  stroke: var(--gold) !important;
+  stroke-width: 2.5 !important;
+  filter: drop-shadow(0 0 6px rgba(201,168,76,.6));
+}
+
+/* ── 问答卡片 ── */
+.qa-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.qa-card {
+  padding: 18px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.qa-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+.qa-question {
+  color: var(--red-dark);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(139,0,0,.2);
+}
+.qa-toggle {
+  background: var(--red-dark);
+  color: #fff;
+  border: 1px solid var(--red-dark);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: "楷体","KaiTi",serif;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 8px;
+}
+.qa-toggle:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+.qa-answer {
+  display: none;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  padding-top: 8px;
+}
+.qa-answer.show {
+  display: block;
+}
+.qa-source {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dotted rgba(139,0,0,.15);
+}
+
+/* ── 选择题样式 ── */
+.choice-container {
+  margin-top: 24px;
+}
+.choice-question {
+  color: var(--red-dark);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(139,0,0,.2);
+}
+.choice-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.choice-button {
+  background: rgba(201,168,76,.2);
+  border: 1px solid var(--gold);
+  color: var(--red-dark);
+  padding: 10px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  font-family: "楷体","KaiTi",serif;
+}
+.choice-button:hover {
+  background: rgba(201,168,76,.4);
+}
+.choice-button.selected.correct {
+  background: var(--red-dark);
+  color: #fff;
+  border-color: var(--red-dark);
+}
+.choice-button.selected.incorrect {
+  background: #d32f2f;
+  color: #fff;
+  border-color: #d32f2f;
+}
+.choice-result {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  padding: 16px;
+  background: rgba(245,237,224,.4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  margin-top: 12px;
+  display: none;
+}
+.choice-result.show {
+  display: block;
+}
+.choice-result.correct {
+  border-left: 4px solid #4CAF50;
+  background: rgba(76,175,80,.05);
+}
+.choice-result.incorrect {
+  border-left: 4px solid #F44336;
+  background: rgba(244,67,36,.05);
+}
+.choice-explanation {
+  font-size: 13px;
+  color: var(--ink-mid);
+  margin-top: 12px;
+}
+.choice-source {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dotted rgba(139,0,0,.15);
+}
+
+/* ── 判断测试 ── */
+.judge-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.judge-question {
+  color: var(--red-dark);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.judge-options {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.judge-button {
+  background: rgba(201,168,76,.2);
+  border: 1px solid var(--gold);
+  color: var(--red-dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.judge-button:hover {
+  background: rgba(201,168,76,.4);
+}
+.judge-button.selected {
+  background: var(--red-dark);
+  color: #fff;
+  border-color: var(--red-dark);
+}
+.judge-result {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  padding: 12px;
+  background: rgba(245,237,224,.4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+/* 判断题按钮组（judge-buttons 兼容旧类名） */
+.judge-buttons {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.judge-btn {
+  background: rgba(201,168,76,.18);
+  border: 1.5px solid var(--gold);
+  color: var(--red-dark);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: "楷体","KaiTi",serif;
+  min-width: 80px;
+  text-align: center;
+}
+.judge-btn:hover {
+  background: rgba(201,168,76,.38);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(201,168,76,.3);
+}
+.judge-btn.selected.correct {
+  background: #b71c1c;
+  color: #fff;
+  border-color: #b71c1c;
+  box-shadow: 0 3px 10px rgba(183,28,28,.3);
+}
+.judge-btn.selected.incorrect {
+  background: #c62828;
+  color: #fff;
+  border-color: #c62828;
+  box-shadow: 0 3px 10px rgba(198,40,40,.3);
+}
+.judge-answer {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  padding: 14px;
+  background: rgba(245,237,224,.5);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold);
+}
+.judge-answer strong { color: var(--red-dark); }
+.judge-source {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dotted rgba(139,0,0,.15);
+}
+
+/* ── 宫殿图谱响应式（横竖通用兜底）── */
+@media (max-width: 896px) {
+  html, body { overflow-x: hidden !important; width: 100% !important; }
+  .region { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    overflow-x: hidden !important; 
+    margin-left: auto !important; 
+    margin-right: auto !important; 
+  }
+  .palace-map-container { padding: 12px; max-width: 100%; overflow: hidden !important; }
+  .palace-map-container svg { overflow: hidden !important; }
+  .compare-table { width: 100% !important; min-width: 100% !important; }
+  .compare-table th, .compare-table td { white-space: normal; }
+}
+
+/* ── 信息面板 ── */
+.info-panel {
+  padding: 16px 20px;
+  background: url('../picture/background4.jpg') repeat;
+  background-size: 200px auto;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  min-height: 80px;
+  transition: var(--transition);
+}
+.info-panel h4 {
+  color: var(--red-dark);
+  font-size: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(139,0,0,.2);
+}
+.info-panel p {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* ── 宫殿建筑详情面板 ── */
+#palace-info {
+  max-height: 300px;
+  overflow-y: auto;
+}
+#palace-info h4 {
+  color: var(--red-dark);
+  font-size: 18px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  font-family: "楷体","KaiTi",serif;
+}
+#palace-info .building-detail {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+}
+#palace-info .building-detail strong {
+  color: var(--red-dark);
+}
+
+/* ── 章节锚点偏移（sticky nav 补偿） ── */
+.region[id] { scroll-margin-top: 60px; }
